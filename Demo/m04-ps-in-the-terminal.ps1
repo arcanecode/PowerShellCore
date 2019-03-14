@@ -23,6 +23,9 @@
   included here as an easy reference. 
 -----------------------------------------------------------------------------#>
 
+dir
+
+Get-ChildItem
 
 
 
