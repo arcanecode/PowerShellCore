@@ -24,8 +24,12 @@
 # Get-ChildItem lists all items in current path
 Get-ChildItem 
 
+# Get-Location will get the current folder
+Get-Location
+
 # Set-Location will change the current path
 Set-Location "C:\PS\01 - Intro"
+Set-Location '/Users/arcanecode/Documents/code/PowerShellCore/Demo'
 
 # Pipelining - combine CmdLets for power
 Get-ChildItem | Where-Object { $_.Length -gt 1kb } 
@@ -52,89 +56,19 @@ Get-ChildItem | Select-Object Name, Length
 # located to the left of the number 1 on your keyboard)
 # Note that just as with the |, the ` must be the very last character
 # on the line. No spaces or comments are allowed after it
+$currentLocation = Get-Location
 
-Get-ChildItem -Path C:\PS `
+Get-ChildItem -Path $currentLocation  `
               -File "*.ps1" `
               -Verbose
 
 # Can combine line continuation and pipes
-Get-ChildItem -Path C:\PS `
+Get-ChildItem -Path $currentLocation `
               -File "*.ps1" `
               -Verbose |
               Format-Table -Property Name, Length -AutoSize
 
 #endregion Cmdlet Pipelining
-
-
-
-
-
-
-
-
-
-#-----------------------------------------------------------------------------#
-# Out-GridView
-#-----------------------------------------------------------------------------#
-#region Out-GridView
-
-# With no params, just displays the results in the output panel
-Get-ChildItem | Out-GridView
-
-# Use -passthru to pipe the results to the next item
-# (without -PassThru nothing gets displayed)
-Get-ChildItem | Out-GridView -PassThru
-
-# Use output mode to determine way in which user 
-# can select output, single or mutliple
-Get-ChildItem | Out-GridView -OutputMode Single
-
-Get-ChildItem | Out-GridView -OutputMode Multiple
-
-# Can add useful titles to the display
-Get-ChildItem | Out-GridView -PassThru -Title "Hello World" 
-
-# You can send the output of the GridView to a variable
-$ov = ""
-Get-ChildItem | Out-GridView -PassThru -OutVariable ov
-
-Clear-Host
-$ov     # Show the result
-
-# Works with -OutputMode too!
-Get-ChildItem | Out-GridView -OutputMode Single -OutVariable ov
-
-Clear-Host
-$ov
-
-# Cancel stops the flow. Run this twice, the second time hit cancel
-Get-ChildItem |
-  Out-GridView -OutputMode Single |
-  Format-Table -AutoSize 
-
-# Waiting around
-# Without wait, when launched from a command line 
-# the gridview won't wait. Open a CMD window then 
-# try these two commands.
-pwsh "Get-ChildItem | Out-GridView"
-pwsh "Get-ChildItem | Out-GridView -Wait" 
-
-
-# Gotcha: Don't try to use format-* before it
-# Yields an error
-Get-ChildItem |
-  Format-Table -Property Name,Length -AutoSize |
-  Out-GridView -PassThru
-
-# Instead use Select-Object
-Get-ChildItem |
-  Select-Object -Property Name, Length |
-  Out-GridView -PassThru
-
-#endregion Out-GridView
-
-
-
 
 
 
@@ -177,21 +111,26 @@ Set-Location variable:
 Get-ChildItem
 
 # Setting up provider aliases
-New-PSDrive -Name BPSD `
+New-PSDrive -Name PSC `
             -PSProvider FileSystem `
-            -Root 'C:\PS\Beginning PowerShell Scripting for Developers'
+            -Root '/Users/arcanecode/Documents/code/PowerShellCore/'
 
-Set-Location BPSD:
+Set-Location PSC:
 Get-ChildItem | Format-Table
 
-Set-Location BPSD:\demo
+Set-Location PSC:\demo
 Get-ChildItem | Format-Table
 
 
 # When done, either use the remove cmdlet below, otherwise
 # when this session ends so does the lifespan of the PSDrive
 # Make sure to set your location outside the PSDrive first
-Set-Location 'C:\PS\Beginning PowerShell Scripting for Developers'
-Remove-PSDrive BPSD
+
+# Windows
+# Set-Location 'C:\PS\Beginning PowerShell Scripting for Developers'
+# macOS
+Set-Location '/Users/arcanecode/Documents/code/PowerShellCore/Demo'
+
+Remove-PSDrive PSC
 
 #endregion Providers

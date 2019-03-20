@@ -15,20 +15,6 @@
   your own projects.
 -----------------------------------------------------------------------------#>
 
-<#-----------------------------------------------------------------------------
-  Beginning PowerShell Scripting for Developers
-  Understanding the PowerShell Platform
-
-  Author: Robert C. Cain | @ArcaneCode | arcanecode@gmail.com
-          http://arcanecode.com
- 
-  This module is Copyright (c) 2015 Robert C. Cain. All rights reserved.
-  The code herein is for demonstration purposes. No warranty or guarentee
-  is implied or expressly granted. 
-  This module may not be reproduced in whole or in part without the express
-  written consent of the author. 
------------------------------------------------------------------------------#>
-
 # Comments begin with a # (aka hashtag or pound sign)
 
 <#
@@ -67,7 +53,7 @@ Get-Command
 
 # Can expand by searching for just a verb or noun
 Get-Command -verb "get"
-Get-Command -noun "service"
+Get-Command -noun "date"
 
 # In the modunle on the terminal, we showed ow Get-Help can be used 
 # to explain a command 
