@@ -172,7 +172,13 @@ $PID
 $PSVersionTable
 
 $_   # Current Object
-Set-Location "C:\ps\01 - intro"
+# Windows
+Set-Location 'C:\ps\01 - intro'
+# Linux
+Set-Location '/home/arcanecode/Documents/code/pscore/PowerShellCore/Demo'
+# macOS
+
+
 Get-ChildItem | Where-Object {$_.Name -like "*.ps1"}
 
 #endregion Variables
