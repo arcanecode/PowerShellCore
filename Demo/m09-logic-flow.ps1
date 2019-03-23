@@ -231,7 +231,11 @@ foreach ($item in $array)
 
 # foreach works with an array of objects
 Clear-Host
+# Windows
 Set-Location "C:\PS\Beginning PowerShell Scripting for Developers\demo"
+# Linux
+Set-Location '/home/arcanecode/Documents/code/pscore/PowerShellCore/Demo'
+
 foreach ($file in Get-ChildItem)
 {
   $file.Name
@@ -240,7 +244,6 @@ foreach ($file in Get-ChildItem)
 
 # Use break to get out of the loop
 Clear-Host
-Set-Location "C:\PS\Beginning PowerShell Scripting for Developers\demo"
 foreach ($file in Get-ChildItem)
 {
   if ($file.Name -like "*.ps1")
@@ -253,7 +256,6 @@ foreach ($file in Get-ChildItem)
 
 # Use continue to skip the rest of a loop but go onto the next iteration
 Clear-Host
-Set-Location "C:\PS"
 foreach ($file in Get-ChildItem)
 {
   if ($file.Name -like "*.ps1")

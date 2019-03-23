@@ -95,7 +95,10 @@ SELECT col1
 
 
 # String Interpolation ---------------------------------------------------------------------------------------------------
+# Windows
 Set-Location C:\PS
+# Linux
+Set-Location '/home/arcanecode/Documents/code/pscore/PowerShellCore/Demo'
 Clear-Host
 
 # Take the output of Get-ChildItem, which is an object, and gets that objects count property

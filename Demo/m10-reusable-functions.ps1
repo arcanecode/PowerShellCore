@@ -23,7 +23,7 @@
 
 $hw = {
   Clear-Host
-  "Hello World"
+  'Hello World'
 }
 & $hw
 
@@ -31,8 +31,8 @@ $hw = {
 # Functions are basically script blocks with names.
 function Write-HelloWorld()
 {
-Clear-Host
-"Hello World"
+  Clear-Host
+  'Hello World'
 }
 
 # Running the above simply places the function in memory for us to use
@@ -49,7 +49,7 @@ Get-Verb
 # Parameters can be passed in by placing them in parenthesis
 function Get-Fullname($firstName, $lastName)
 {
-Write-Host ($firstName + " " + $lastName)
+  Write-Host ($firstName + " " + $lastName)
 }
 
 # Note when calling the function with parameters, do not use commas or ()
@@ -65,8 +65,8 @@ Get-Fullname $("Ar" + "cane") "Code"
 # Any changes to a paramater inside a function are scoped to that function
 function Set-NonRefVar($myparam)
 {
-$myparam = 33
-"Inside function `$myparam = $myparam"
+  $myparam = 33
+  "Inside function `$myparam = $myparam"
 }
 
 Clear-Host
@@ -80,8 +80,8 @@ Set-NonRefVar($myparam)
 # Note however it turns it into an object, thus requiring the .Value syntax
 function Set-RefVar([ref] $myparam)
 {
-$myparam.Value = 33
-"Inside function `$myparam = $($myparam.Value)"
+  $myparam.Value = 33
+  "Inside function `$myparam = $($myparam.Value)"
 }
 
 Clear-Host
@@ -95,7 +95,7 @@ Set-RefVar ([ref] $myparam) # Must add ref to call
 
 function Get-AValue($one, $two)
 {
-return $one * $two
+  return $one * $two
 }
 
 Get-AValue 33 42
@@ -118,36 +118,40 @@ $returnValue = Get-AValue -two 42 -one 33
 # These are referred to as advanced functions
 function Get-PSFiles ()
 {
-# The begin block executes once at the start of the function
-begin  { $retval = "Here are some PowerShell files: `r`n" }
-
-# The process block is executed once for each object being
-# passed in from the pipe
-process { 
-      if ($_.Name -like "*.ps1")
-      { 
-        $retval += "`t$($_.Name)`r`n"
-        # Note this line could also be rendered as
-        # $retval = $retval + "`t" + $_.Name + "`r`n" 
-        # `t     Tab Character
-        # `r     Carriage Return
-        # `n     Line Feed
-        # $( )   Tells PS to evaute the expression in () first then return it
-        # $_     The current object being passed in the pipeline
-        # .Name  The name property of the current object 
+  # The begin block executes once at the start of the function
+  begin  { $retval = "Here are some PowerShell files: `r`n" }
+  
+  # The process block is executed once for each object being
+  # passed in from the pipe
+  process { 
+        if ($_.Name -like "*.ps1")
+        { 
+          $retval += "`t$($_.Name)`r`n"
+          # Note this line could also be rendered as
+          # $retval = $retval + "`t" + $_.Name + "`r`n" 
+          # `t     Tab Character
+          # `r     Carriage Return
+          # `n     Line Feed
+          # $( )   Tells PS to evaute the expression in () first then return it
+          # $_     The current object being passed in the pipeline
+          # .Name  The name property of the current object 
+        }
       }
-    }
-
-# The end block executes once, after the rest of the function
-end { return $retval }          
+  
+  # The end block executes once, after the rest of the function
+  end { return $retval }          
 }
 
 Clear-Host
+# Windows
 Set-Location "C:\PS\Beginning PowerShell Scripting for Developers\demo"
+
+# Linux
+Set-Location '/home/arcanecode/Documents/code/pscore/PowerShellCore/Demo'
+
 Get-ChildItem | Get-PSFiles
 
 $output = Get-ChildItem | Get-PSFiles
-
 
 $output.GetType()
 
@@ -155,25 +159,25 @@ Clear-Host
 $i = 0
 foreach($f in $output)
 {
-$i++
-"$i : $f"
+  $i++
+  "$i : $f"
 }
 
 
 # To pipeline the output, push the output in the process area
 function Get-PSFiles ()
 {
-begin  { }
-
-process { 
-      if ($_.Name -like "*.ps1")
-      { 
-        $retval = "`tPowerShell file is $($_.Name)"
-        $retval  # This is the equivalent of: return $retval
+  begin  { }
+  
+  process { 
+        if ($_.Name -like "*.ps1")
+        { 
+          $retval = "`tPowerShell file is $($_.Name)"
+          $retval  # This is the equivalent of: return $retval
+        }
       }
-    }
-
-end { }          
+  
+  end { }          
 }
 
 $output = Get-ChildItem | Get-PSFiles
@@ -183,26 +187,25 @@ Clear-Host
 $i = 0
 foreach($f in $output)
 {
-$i++
-"$i : $f"
+  $i++
+  "$i : $f"
 }
 
 
 function Write-SomeText ()
 {
-# begin  { }
-
-process { 
-      $retval = "Here is the output: $($_)"
-      $retval
-    }
-
-# end { }          
+  # begin  { }
+  
+  process { 
+        $retval = "Here is the output: $($_)"
+        $retval
+      }
+  
+  # end { }          
 }
 
 
 Clear-Host
-Set-Location "C:\PS\Beginning PowerShell Scripting for Developers\demo"
 Get-ChildItem | Get-PSFiles | Write-SomeText
 
 
@@ -222,29 +225,29 @@ Get-ChildItem | Get-PSFiles
 # Advanced functions also allow parameters with extra helping hints
 function Get-AValue ()
 {
-[CmdletBinding()]   # Needed to indicate this is an advanced function
-param (  # Begin the parameter block
-   [Parameter( Mandatory = $true,
-               HelpMessage = 'Please enter value one.'
-               )]
-   [int] $one,
-   # Note in the second we are strongly typing, and are providing a default value
-   [Parameter( Mandatory = $false,
-               HelpMessage = 'Please enter value two.'
-               )]
-   [int] $two = 42
-  )  # End the parameter block
-
-begin { }
-
-process { 
-      return $one * $two
-    }
-
-end { }
-
+  [CmdletBinding()]   # Needed to indicate this is an advanced function
+  param (  # Begin the parameter block
+     [Parameter( Mandatory = $true,
+                 HelpMessage = 'Please enter value one.'
+                 )]
+     [int] $one,
+     # Note in the second we are strongly typing, and are providing a default value
+     [Parameter( Mandatory = $false,
+                 HelpMessage = 'Please enter value two.'
+                 )]
+     [int] $two = 42
+    )  # End the parameter block
+  
+  begin { }
+  
+  process { 
+        return $one * $two
+      }
+  
+  end { }
+  
 }
-
+  
 # Example 1 pass in values
 Get-AValue -one 33 -two 42
 
@@ -272,10 +275,10 @@ Get-AValue -one "x"
 
 function divver($enum,$denom)
 {   
-Write-Host "Divver begin."
-$result = $enum / $denom
-Write-Host "Result: $result"
-Write-Host "Divver done."    
+  Write-Host "Divver begin."
+  $result = $enum / $denom
+  Write-Host "Result: $result"
+  Write-Host "Divver done."    
 }
 
 Clear-Host
@@ -285,24 +288,24 @@ divver 33 0   # Generate Error
 # Handle errors using try/catch/finally
 function divver($enum,$denom)
 {   
-Write-Host "Divver begin."
-
-try
-{
-$result = $enum / $denom
-Write-Host "Result: $result"
-}
-catch
-{
-Write-Host "Oh NO! An error has occurred!!"
-Write-Host $_.ErrorID
-Write-Host $_.Exception.Message
-break  # With break, or omitting it, error bubbles up to parent
-}
-finally
-{
-Write-Host "Divver done."    
-}
+  Write-Host "Divver begin."
+  
+  try
+  {
+    $result = $enum / $denom
+    Write-Host "Result: $result"
+  }
+  catch
+  {
+    Write-Host "Oh NO! An error has occurred!!"
+    Write-Host $_.ErrorID
+    Write-Host $_.Exception.Message
+    break  # With break, or omitting it, error bubbles up to parent
+  }
+  finally
+  {
+    Write-Host "Divver done."    
+  }
 }
 
 Clear-Host
@@ -323,7 +326,7 @@ Get-Help Get-ChildItem
 # Help for your function?
 function Get-ChildName ()
 {
-Write-Output (Get-ChildItem | Select-Object "Name")
+  Write-Output (Get-ChildItem | Select-Object "Name")
 }
 Clear-Host
 Get-Help Get-ChildName
