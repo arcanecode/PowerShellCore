@@ -373,7 +373,7 @@ Get-ChildItem
 
 #>
 
-Write-Output (Get-ChildItem | Select-Object "Name")
+  Write-Output (Get-ChildItem | Select-Object "Name")
 
 }
 
