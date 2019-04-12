@@ -28,3 +28,7 @@ Get-Module Az* -ListAvailable
 Install-Module Az
 
 
+# Login to Azure
+$securePW = ConvertTo-SecureString 'Ammie.6611.mvp' -AsPlainText -Force
+$psCredential = New-Object System.Management.Automation.PSCredential('rccain@gmail.com', $securePW)
+Connect-AzAccount -ServicePrincipal -Credential $psCredential -TenantId
