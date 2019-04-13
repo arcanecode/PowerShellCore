@@ -136,15 +136,54 @@ $saContext = New-AzStorageContext -StorageAccountName $saName `
                                   -StorageAccountKey $saKey 
 
 
+# OK, we now have a storage account, got the key for it, and from it was able
+# to create a context. Now we're finally ready to create a container. Before
+# we do, there's on parameter that needs some explanation
 
-Each account has a token
-# called a Storage Context, and you use that storage context object in 
-# creating and managing containers. 
+# Permission - Off - Only the storage account owner can see this container
+#              Blob - Provides anonymous access the ability to a specific
+#                     blob, but not to other data in the container
+#              Container - Provides full read access to everything in the 
+#                          container
+# For our purposes we can use Container, since this is just a demo
 
-# Before we can create a container then, we first have to get the context for
-# the storage account
-$context = Get-AzStorageCo
+# Also note that just like storage accounts, container names must be between 
+# 3 and 24 characters in length, and can only be lowercase and numbers
 
+$containerName = 'pscorecoursecontainer'
+New-AzStorageContainer -Name $containerName `
+                       -Context $saContext `
+                       -Permission Container
+
+# When we want we can see the containers associated with the storage account
+# by passing in the storage account's context
+Get-AzStorageContainer -Context $saContext
+
+# Let's upload some files. 
+$localLocation = Get-Location
+Set-Location "$($localLocation)\Demo"
+
+# Get a list of all the PowerShell files
+$psfiles = Get-ChildItem *.ps1
+$timeOut = 500000
+
+foreach($psfile in $psfiles)
+{
+  # FullName is the full path and file name
+  # Name is only the name of the file (with extension)
+  # I have a slow internet, so to prevent time outs I set it to a high number
+  # The Force switch will overwrite a file if it already exists
+  Set-AzStorageBlobContent -File $psfile.FullName `
+                           -Container $containerName `
+                           -Blob $psfile.Name `
+                           -Context $saContext `
+                           -ServerTimeoutPerRequest $timeOut `
+                           -ClientTimeoutPerRequest $timeOut `
+                           -Force 
+}
+
+# Now let's see what made it
+Get-AzStorageBlob -Container $containerName -Context $saContext
 
 
 
