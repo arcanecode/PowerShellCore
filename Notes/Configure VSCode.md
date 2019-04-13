@@ -30,6 +30,12 @@ OR you can specify a time limit
 $ git config --global credential.helper 'cache --timeout=3600'
 # Set the cache to timeout after 1 hour (setting is in seconds) 
 
+OR you can put your credentials in the credentail helper store
+git config credential.help store
+git push https://github.com/arcanecode/PowerShellCore   (or your repository)
+When prompted enter your user id and password
+If successful, you'll see "Everything up-to-date".
+
 # We'll use
 $ git config --global credential.helper 'cache --timeout=28800'
 
