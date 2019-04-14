@@ -13,6 +13,12 @@ Follow recommendations that the doctor gives
 
 brew cask install powershell
 
+If you already installed PowerShell and just want to update it, you can use
+
+brew cask upgrade
+
+This will upgrade all casks on your system, including PowerShell. 
+
 You may have to install gcc
 
 brew install gcc
