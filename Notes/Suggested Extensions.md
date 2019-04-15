@@ -4,3 +4,4 @@ PowerShell
 Markdown All in One
 Markdown Preview Enhanced
 SQL Server (mssql)
+Bash Debug

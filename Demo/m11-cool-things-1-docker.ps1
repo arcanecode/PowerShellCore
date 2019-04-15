@@ -14,3 +14,5 @@
   written consent of the author and/or Pluralsight. It can be used within
   your own projects.
 -----------------------------------------------------------------------------#>
+
+bash ./m11-install-docker.sh 
