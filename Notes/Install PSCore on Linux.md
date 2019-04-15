@@ -68,5 +68,10 @@ At the time of this writing, Azure Data Studio is not availble via a snap. You w
 
 https://docs.microsoft.com/en-us/sql/azure-data-studio/download?view=sql-server-2017
 
-Be sure to read through the documentation, toward the bottom they mention additional dependancies you may need on your system.  
+Be sure to read through the documentation, toward the bottom they mention additional dependancies you may need on your system. These have already been included in the Setup-Ubuntu.sh script.
 
+Once you have it downloaded (this assumes you take the default to save in the Downloads folder) you can install with this command:
+```bash
+sudo dpkg -i ./Downloads/azuredatastudio-linux-1.5.2.deb
+```
+Make sure to update the version number to the most current version for the file you download.
