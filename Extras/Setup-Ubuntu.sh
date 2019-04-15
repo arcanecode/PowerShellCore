@@ -3,6 +3,9 @@
 # First make sure everything is up to date
 sudo apt-get update
 
+# Install git
+sudo apt install git-all
+
 # Now install the snap application
 sudo apt install snapd
 
