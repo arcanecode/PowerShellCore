@@ -12,6 +12,9 @@ sudo snap install powershell --classic
 # Next, we can install VSCode
 sudo snap install --classic code
 
+# Go ahead and install the network tools so we can use things like ifconfig
+sudo apt install net-tools
+
 # There are some prerequsites we can install for Azure Data Studio
 sudo apt-get install libxss1
 sudo apt-get install libgconf-2-4
