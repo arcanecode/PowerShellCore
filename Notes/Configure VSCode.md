@@ -91,3 +91,25 @@ The next time you clone an HTTPS URL that requires a password, you'll be prompte
 
 From:
 https://help.github.com/en/articles/caching-your-github-password-in-git
+
+# Other tweaks
+Personally, I can't stand tabs in my code, I convert them to spaces. This next step is of course completely optional, but if you want to replace tabs, in the VSCode menu select File, Preferences. In the upper right corner, click on the curly brace icon to switch the settings into json mode. 
+
+Now paste in the following code block:
+```json
+    // The number of spaces a tab is equal to
+    "editor.tabSize": 2,
+
+    // Insert spaces when presing tab
+    "editor.insertSpaces": true,
+
+    // When opening a file, tabsize and insert spaces will be detected based on the file type
+    "editor.detectIndentation": true
+```
+
+If there are other settings in the file above the spot where you are pasting in, don't forget to put a comma at the end of the previous setting. Likewise, if there are settings below where you paste in, make sure to put a comma after the true at the end of the detectIndentation line.
+
+If your file is full of tabs, use CTRL+A to select everything, then hit CTRL+SHIFT+P (or the appropriate key) to bring up the command pallet. Then use the command:
+```bash
+Convert Indentation to Spaces
+```
