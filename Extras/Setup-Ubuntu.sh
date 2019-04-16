@@ -1,5 +1,9 @@
 # This script will do a complete run thru setting up most of what you need on Ubuntu
 
+#------------------------------------------------------------------------------
+# Install Git, Snap, PowerShell, VSCode and network tools
+#------------------------------------------------------------------------------
+
 # First make sure everything is up to date
 sudo apt-get -y update
 
@@ -17,6 +21,10 @@ sudo snap install --classic code
 
 # Go ahead and install the network tools so we can use things like ifconfig
 sudo apt -y install net-tools
+
+#------------------------------------------------------------------------------
+# Azure Data Studio
+#------------------------------------------------------------------------------
 
 # There are some prerequsites we can install for Azure Data Studio
 sudo apt-get -y install libxss1
@@ -39,7 +47,9 @@ mv index.html?linkid=2083327 azuredatastudio-linux.deb
 cd ~
 sudo dpkg -i ./Downloads/azuredatastudio-linux.deb
 
-# Now we'll install Docker
+#------------------------------------------------------------------------------
+# Docker Installation
+#------------------------------------------------------------------------------
 
 # First, install some packages that will allow us to use a repository over https
 sudo apt-get -y install apt-transport-https 
@@ -67,6 +77,10 @@ sudo docker pull mcr.microsoft.com/mssql/server:2017-latest
 sudo docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=passW0rd!' \
    -p 1433:1433 --name arcanesql \
    -d mcr.microsoft.com/mssql/server:2017-latest
+
+#------------------------------------------------------------------------------
+# Configure the Ubuntu Desktop Favorites bar
+#------------------------------------------------------------------------------
 
 # As a last step let's fix up our favorites
 # If you want to see what the default favorites are, use:
