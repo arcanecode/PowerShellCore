@@ -15,21 +15,20 @@
   your own projects.
   -----------------------------------------------------------------------------#>
   
-  # The Azure module can be found in the PowerShell Gallery. The PSGallery
-  # can be thought of as a repository. 
-  
-  # First verify it is in the gallery and see its version
-  Find-Module Az
-  
-  # See if the module is already on the system
-  Get-Module Az* -ListAvailable  
-  
-  # Install the module
-  Install-Module Az
-  
-  
-  # Login to Azure Interactively
-  Connect-AzAccount
+# The Azure module can be found in the PowerShell Gallery. The PSGallery
+# can be thought of as a repository. 
+
+# First verify it is in the gallery and see its version
+Find-Module Az
+
+# See if the module is already on the system
+Get-Module Az* -ListAvailable  
+
+# Install the module
+Install-Module Az
+
+# Login to Azure Interactively
+Connect-AzAccount
 
 # Get your subscriptions - This lists all the subscriptions associated with
 # your accounts login
@@ -316,25 +315,30 @@ while ($keepGoing -eq $true)
 }
 
 Get-AzSqlDatabase -ResourceGroupName $rgName `
-                       -ServerName $serverName |
+                  -ServerName $serverName |
   Select-Object ResourceGroupName, ServerName, DatabaseName, Status
 
 # Now let's run a simple SQL query against the database. In order to do a SQL
 # query though, you'll first need to install the SQL Server module onto this
-# computer from the PSGallery
+# computer from the PSGallery, if you've not done so already.
 # Uncomment the next line in order to install it, note you only have to do
 # this once.
 # Install-Module SqlServer
 
+# As we did in the previous demo (m11-cool-things-1-docker) let's use
+# splatting to make parameter reuse easier
 $queryTimeout = 500000
-$sql = 'SELECT * FROM dbo.FavoriteYouTubers'
 
-Invoke-Sqlcmd -Query $sql `
-              -ServerInstance "$serverName.database.windows.net" `
-              -Database $dbName `
-              -Username "$adminName@$serverName" `
-              -Password $pw `
-              -QueryTimeout $queryTimeout
+$sqlParams = @{ "ServerInstance" = "$serverName.database.windows.net" ;
+                "Database" = $dbName ;
+                "Username" = "$adminName@$serverName" ;
+                "Password" = $pw ;
+                "QueryTimeout" = $queryTimeout
+              }
+
+
+$sql = 'SELECT * FROM dbo.FavoriteYouTubers'
+Invoke-Sqlcmd -Query $sql @sqlParams
 
 # Here we only ran one statement, but you could easily run scripts.
 # This array holds the SQL files we want to run. For this demo we only have
@@ -367,36 +371,21 @@ foreach ($sqlScript in $sqlScripts)
   
   # The password should be the unencrypted, plain text password
 
-  Invoke-Sqlcmd -Query $sql `
-                -ServerInstance "$serverName.database.windows.net" `
-                -Database $dbName `
-                -Username "$adminName@$serverName" `
-                -Password $pw `
-                -QueryTimeout $queryTimeout
+  Invoke-Sqlcmd -Query $sql @sqlParams
 }
 
 Write-Host "Done updating $dbName" -ForegroundColor Yellow
 
 # Now let's test it.
 $sql = "EXEC dbo.LogMessage 'A test log message at $(Get-Date)'"
-Invoke-Sqlcmd -Query $sql `
-              -ServerInstance "$serverName.database.windows.net" `
-              -Database $dbName `
-              -Username "$adminName@$serverName" `
-              -Password $pw `
-              -QueryTimeout $queryTimeout
+Invoke-Sqlcmd -Query $sql @sqlParams
 
 $sql = @'
 SELECT * 
   FROM dbo.DebugLog
  ORDER BY [Log Time] DESC
 '@
-Invoke-Sqlcmd -Query $sql `
-              -ServerInstance "$serverName.database.windows.net" `
-              -Database $dbName `
-              -Username "$adminName@$serverName" `
-              -Password $pw `
-              -QueryTimeout $queryTimeout
+Invoke-Sqlcmd -Query $sql @sqlParams
 
 # You could of course use Invoke-SqlCmd to create tables, read or update data,
 # and more. Anything you could do in normal T-SQL can be done via the
