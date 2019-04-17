@@ -23,6 +23,12 @@ sudo snap install --classic code
 sudo apt -y install net-tools
 
 #------------------------------------------------------------------------------
+# Install openssh
+#------------------------------------------------------------------------------
+# Make sure to follow the instructions in Configure Remoting on Ubuntu.md
+sudo apt -y install openssh-client openssh-server 
+
+#------------------------------------------------------------------------------
 # Azure Data Studio
 #------------------------------------------------------------------------------
 

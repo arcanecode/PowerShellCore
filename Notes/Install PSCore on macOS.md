@@ -2,7 +2,7 @@
 
 ## Install brew
 
-First, install brew:
+First, install brew. Note that brew has a dependancy on the XCode libraries, which are about a 6 gig download. If you plan to run this over and over, for example setting up virtual macOS machines for testing and development, you might consider downloading it once and installing manually if you have a slow internet connection. You do have to have an Apple developer account in order to download it as an installer from Apple. 
 ```bash
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
@@ -85,3 +85,7 @@ brew cask install azure-data-studio
 
 ### References
 https://coolestguidesontheplanet.com/installing-homebrew-on-macos-sierra-package-manager-for-unix-apps/
+
+Running brew with no user intervention:
+https://stackoverflow.com/questions/24426424/unattended-no-prompt-homebrew-installation-using-expect
+https://stackoverflow.com/questions/25128546/how-to-automate-homebrew-installation

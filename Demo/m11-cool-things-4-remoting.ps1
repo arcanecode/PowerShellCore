@@ -1,7 +1,38 @@
+<#-----------------------------------------------------------------------------
+  Getting Started with PowerShell Core on Linux and macOS
+  Cool Things You Can Do with PowerShell - Processes
+
+  Author: Robert C. Cain | @ArcaneCode | arcanecode@gmail.com
+          http://arcanecode.com
+ 
+  This module is Copyright (c) 2015, 2019 Robert C. Cain. All rights reserved.
+
+  The code herein is for demonstration purposes. No warranty or guarentee
+  is implied or expressly granted. 
+  
+  This module may not be reproduced in whole or in part without the express
+  written consent of the author and/or Pluralsight. It can be used within
+  your own projects.
+-----------------------------------------------------------------------------#>
+
+# This demo will show how to use PowerShell remoting to either start a 
+# session on a remote system, just like SSH, or to execute commands on a 
+# remote session without having to enter a session.
+
+# Before this will work, there is some setup that must be done. Please see
+# the file Configure Remoting on Ubuntu.md for full instructions. 
+
+# Let's start by creating a session against a remote server. Note that as we
+# enabled ssh key login on the remote server, we won't be prompted for a 
+# password. 
 $session = New-PSSession -HostName acubuntu1810server -UserName arcanecode
 
+# Display the contents of the session variable.
 $session
 
+# Use the following command to start an interactive session with the remote
+# server. Note how the command line prompt in the terminal window updates
+# to show the remote server name. 
 Enter-PSSession -Session $session
 
 # You will see the prompt change to the server name. Now any commands you
@@ -25,3 +56,5 @@ $command = { Get-Process |
 # having to Enter into a PSSession (aka ssh) into it
 Invoke-Command $session -ScriptBlock $command |
   Format-Table -AutoSize
+
+Invoke-Command $session gci
