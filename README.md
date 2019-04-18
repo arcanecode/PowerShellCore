@@ -30,4 +30,14 @@ This demo is still in development as of April 2019. It will likely receive daily
 ## Easy Download
 For ease of download, a ZIP file has been uploaded to the root diretory with the entire project. This will allow you to do a single download to your machine. 
 
+# Disclaimer and contact info
+PowerShell Core on Linux and macOS
+  
+Author: Robert C. Cain | @ArcaneCode | arcanecode <at> gmail.com
+        http://arcanecode.com
+ 
+These demos and accompanying notes are Copyright (c) 2015, 2019 Robert C. Cain. All rights reserved.
 
+While the author strives for correctness and accuracy, it should be clearly stated the code herein is for demonstration purposes only. No warranty or guarentee is implied or expressly granted. User assumes all responsibility.
+
+This module may not be reproduced in whole or in part without the express written consent of the author and/or Pluralsight. Parts can be used within your own projects, at your own risk.
