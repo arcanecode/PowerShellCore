@@ -8,8 +8,7 @@ Each script contains extensive commenting, make sure you read and understand eac
 # Disclaimer and contact info
 PowerShell Core on Linux and macOS
   
-Author: Robert C. Cain | @ArcaneCode | arcanecode <at> gmail.com
-        http://arcanecode.com
+Author: Robert C. Cain | @ArcaneCode | arcanecode _at_ gmail.com | http://arcanecode.com
  
 These demos and accompanying notes are Copyright (c) 2015, 2019 Robert C. Cain. All rights reserved.
 
