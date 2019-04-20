@@ -78,10 +78,10 @@ https://docs.microsoft.com/en-us/sql/azure-data-studio/download?view=sql-server-
 ### Method 2 - Using brew
 You can also install Azure Data Studio using brew.
 ```bash
-brew cask update
+brew cask upgrade
 brew cask install azure-data-studio
 ```
-(Note if you just did an update to install VSCode, you could skip the first line)
+(Note if you just did an upgrade prior to installing VSCode, you could skip the first line)
 
 ### References
 https://coolestguidesontheplanet.com/installing-homebrew-on-macos-sierra-package-manager-for-unix-apps/

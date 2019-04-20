@@ -1,8 +1,31 @@
-This is an abbreviated, quick reference for MarkDown. For a full detail version see:
-https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
+This document is a Markdown quick reference. It is by no means a comprehensive tutorial on Markdown, but rather just some of the most common Markdown tags to serve as a reminder. 
+
+You can view this using one of the Markdown preview tools, just be aware somethings won't work quite right, such as the Image and YouTube sections, as they point to items that do not exist. 
+
+In addition the comments section won't show any output in the preview window because, well they're not supposed to! :-)
+
+Comments
+Markdown comments can be done in two ways. First is the markdown syntax:
+
+[//]: # (Here is my comment)
+
+You can also give the comment a name/id
+
+[comment]: # (Here is another comment)
+
+The second method is with HTML
+<!---
+Block HTML comment here
+multiline too
+Make sure to use three - after the opening as some markdown viewers fail to recognize the html comment without it. 
+-->
+
+Embedding blank linkes
+To embed a blank line (extra space) in a document, you have to resort to HTML
+
+&nbsp;
 
 Headers
-
 # H1
 ## H2
 ### H3
@@ -10,175 +33,49 @@ Headers
 ##### H5
 ###### H6
 
-Alternatively, for H1 and H2, an underline-ish style:
+Italics: _word_  (can also use a single *)
+Bold: **word**   (can also use a double underscore __)
+Strikethru: ~~word~~
 
-Alt-H1
-======
-
-Alt-H2
-------
-
-H1
-H2
-H3
-H4
-H5
-H6
-
-Alternatively, for H1 and H2, an underline-ish style:
-Alt-H1
-Alt-H2
-Emphasis
-
-Emphasis, aka italics, with *asterisks* or _underscores_.
-
-Strong emphasis, aka bold, with **asterisks** or __underscores__.
-
-Combined emphasis with **asterisks and _underscores_**.
-
-Strikethrough uses two tildes. ~~Scratch this.~~
-
-
-
-(In this example, leading and trailing spaces are shown with with dots: ⋅)
-
-1. First ordered list item
-2. Another item
-⋅⋅* Unordered sub-list. 
-1. Actual numbers don't matter, just that it's a number
-⋅⋅1. Ordered sub-list
-4. And another item.
-
-⋅⋅⋅You can have properly indented paragraphs within list items. Notice the blank line above, and the leading spaces (at least one, but we'll use three here to also align the raw Markdown).
-
-⋅⋅⋅To have a line break without a paragraph, you will need to use two trailing spaces.⋅⋅
-⋅⋅⋅Note that this line is separate, but within the same paragraph.⋅⋅
-⋅⋅⋅(This is contrary to the typical GFM line break behaviour, where trailing spaces are not required.)
-
+Lists
 * Unordered list can use asterisks
 - Or minuses
 + Or pluses
 
-    First ordered list item
-    Another item
+Images
+You can embed images in one of two ways. The first uses pure markdown, but doesn't allow you to resize the image. (Note the image file names are case sensitive).
 
-    Unordered sub-list.
+![Image Name](Images/myimage.jpg)
 
-    Actual numbers don't matter, just that it's a number
+If you need to resize the image, you can use the HTML IMG tag.
 
-    Ordered sub-list
+<img src="Images/myimage.jpg" width=320 height=240 alt="my image goes here">
 
-    And another item.
-
-    You can have properly indented paragraphs within list items. Notice the blank line above, and the leading spaces (at least one, but we'll use three here to also align the raw Markdown).
-
-    To have a line break without a paragraph, you will need to use two trailing spaces.
-    Note that this line is separate, but within the same paragraph.
-    (This is contrary to the typical GFM line break behaviour, where trailing spaces are not required.)
-
-    Unordered list can use asterisks
-
-    Or minuses
-
-    Or pluses
 
 Links
+You can just paste in URL in which case markdown will make it a link
 
-There are two ways to create links.
+This will display the text in brackets, but link to the URL in parens
+[Inline link](http://arcanecode.me)
 
-[I'm an inline-style link](https://www.google.com)
+This will do the same but add a title
+[Inline link](http://arcanecode.me "Arcane's Page")
 
-[I'm an inline-style link with title](https://www.google.com "Google's Homepage")
+Can also have relative links
+[Link to another file](../path/theotherfile.html)
 
-[I'm a reference-style link][Arbitrary case-insensitive reference text]
+Code
+Inline code is surrounded with single backticks
+Here the variable `$myVar` is used to do fun things.
 
-[I'm a relative reference to a repository file](../blob/master/LICENSE)
-
-[You can use numbers for reference-style link definitions][1]
-
-Or leave it empty and use the [link text itself].
-
-URLs and URLs in angle brackets will automatically get turned into links. 
-http://www.example.com or <http://www.example.com> and sometimes 
-example.com (but not on Github, for example).
-
-Some text to show that the reference links can follow later.
-
-[arbitrary case-insensitive reference text]: https://www.mozilla.org
-[1]: http://slashdot.org
-[link text itself]: http://www.reddit.com
-
-I'm an inline-style link
-
-I'm an inline-style link with title
-
-I'm a reference-style link
-
-I'm a relative reference to a repository file
-
-You can use numbers for reference-style link definitions
-
-Or leave it empty and use the link text itself.
-
-URLs and URLs in angle brackets will automatically get turned into links. http://www.example.com or http://www.example.com and sometimes example.com (but not on Github, for example).
-
-Some text to show that the reference links can follow later.
-Images
-
-Here's our logo (hover to see the title text):
-
-Inline-style: 
-![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
-
-Reference-style: 
-![alt text][logo]
-
-[logo]: https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 2"
-
-Here's our logo (hover to see the title text):
-
-Inline-style: alt text
-
-Reference-style: alt text
-Code and Syntax Highlighting
-
-Code blocks are part of the Markdown spec, but syntax highlighting isn't. However, many renderers -- like Github's and Markdown Here -- support syntax highlighting. Which languages are supported and how those language names should be written will vary from renderer to renderer. Markdown Here supports highlighting for dozens of languages (and not-really-languages, like diffs and HTTP headers); to see the complete list, and how to write the language names, see the highlight.js demo page.
-
-Inline `code` has `back-ticks around` it.
-
-Inline code has back-ticks around it.
-
-Blocks of code are either fenced by lines with three back-ticks ```, or are indented with four spaces. I recommend only using the fenced code blocks -- they're easier and only they support syntax highlighting.
-
-```javascript
-var s = "JavaScript syntax highlighting";
-alert(s);
+Code blocks use three backticks. To enable syntax highlighting put the language name after the last backtick on the first line.
+```powershell
+$path = '/home/documents/'
+Get-ChildItem $path
 ```
- 
-```python
-s = "Python syntax highlighting"
-print s
-```
- 
-```
-No language indicated, so no syntax highlighting. 
-But let's throw in a <b>tag</b>.
-```
-
-var s = "JavaScript syntax highlighting";
-alert(s);
-
-s = "Python syntax highlighting"
-print s
-
-No language indicated, so no syntax highlighting in Markdown Here (varies on Github). 
-But let's throw in a <b>tag</b>.
 
 Tables
-
-Tables aren't part of the core Markdown spec, but they are part of GFM and Markdown Here supports them. They are an easy way of adding tables to your email -- a task that would otherwise require copy-pasting from another application.
-
-Colons can be used to align columns.
+Use vertical bars to divide columns. Colons can be used to align columns.
 
 | Tables        | Are           | Cool  |
 | ------------- |:-------------:| -----:|
@@ -186,101 +83,26 @@ Colons can be used to align columns.
 | col 2 is      | centered      |   $12 |
 | zebra stripes | are neat      |    $1 |
 
-There must be at least 3 dashes separating each header cell.
-The outer pipes (|) are optional, and you don't need to make the 
-raw Markdown line up prettily. You can also use inline Markdown.
+Note there must be at least three dashes for each header cell. Also, the opening and closing vertical bar are optional, but look much nicer. 
 
-Markdown | Less | Pretty
---- | --- | ---
-*Still* | `renders` | **nicely**
-1 | 2 | 3
+Block Quotes
+Blaock quotes can be used to emulate a side note or what you might see in email. It produces the text in a light font (by default dark gray) on a colored background (default is a light gray). Use > to create a block quote.
 
-Colons can be used to align columns.
-Tables 	Are 	Cool
-col 3 is 	right-aligned 	$1600
-col 2 is 	centered 	$12
-zebra stripes 	are neat 	$1
+> Some text to block quote
+> Here's the **second** line
 
-There must be at least 3 dashes separating each header cell. The outer pipes (|) are optional, and you don't need to make the raw Markdown line up prettily. You can also use inline Markdown.
-Markdown 	Less 	Pretty
-Still 	renders 	nicely
-1 	2 	3
-Blockquotes
+You can also embed markdown inside the block quote, as the above example shows with the word second bolded. 
 
-> Blockquotes are very handy in email to emulate reply text.
-> This line is part of the same quote.
+HTML
+You can embed HTML inside markdown, and for the most part it renders well.
 
-Quote break.
 
-> This is a very long line that will still be quoted properly when it wraps. Oh boy let's keep writing to make sure this is long enough to actually wrap for everyone. Oh, you can *put* **Markdown** into a blockquote. 
-
-    Blockquotes are very handy in email to emulate reply text. This line is part of the same quote.
-
-Quote break.
-
-    This is a very long line that will still be quoted properly when it wraps. Oh boy let's keep writing to make sure this is long enough to actually wrap for everyone. Oh, you can put Markdown into a blockquote.
-
-Inline HTML
-
-You can also use raw HTML in your Markdown, and it'll mostly work pretty well.
-
-<dl>
-  <dt>Definition list</dt>
-  <dd>Is something people use sometimes.</dd>
-
-  <dt>Markdown in HTML</dt>
-  <dd>Does *not* work **very** well. Use HTML <em>tags</em>.</dd>
-</dl>
-
-Definition list
-    Is something people use sometimes.
-Markdown in HTML
-    Does *not* work **very** well. Use HTML tags.
-
-Horizontal Rule
-
-Three or more...
-
+Horizontal rule
+You can add a horizontal rule in one of three ways. Use three Hyphens, Asterisks, or Underscores
 ---
-
-Hyphens
-
 ***
-
-Asterisks
-
 ___
 
-Underscores
-
-Three or more...
-
-Hyphens
-
-Asterisks
-
-Underscores
-Line Breaks
-
-My basic recommendation for learning how line breaks work is to experiment and discover -- hit <Enter> once (i.e., insert one newline), then hit it twice (i.e., insert two newlines), see what happens. You'll soon learn to get what you want. "Markdown Toggle" is your friend.
-
-Here are some things to try out:
-
-Here's a line for us to start with.
-
-This line is separated from the one above by two newlines, so it will be a *separate paragraph*.
-
-This line is also a separate paragraph, but...
-This line is only separated by a single newline, so it's a separate line in the *same paragraph*.
-
-Here's a line for us to start with.
-
-This line is separated from the one above by two newlines, so it will be a separate paragraph.
-
-This line is also begins a separate paragraph, but...
-This line is only separated by a single newline, so it's a separate line in the same paragraph.
-
-(Technical note: Markdown Here uses GFM line breaks, so there's no need to use MD's two-space line breaks.)
 YouTube Videos
 
 They can't be added directly but you can add an image with a link to the video like this:
@@ -292,21 +114,3 @@ alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
 Or, in pure Markdown, but losing the image sizing and border:
 
 [![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)](http://www.youtube.com/watch?v=YOUTUBE_VIDEO_ID_HERE)
-
-Referencing a bug by #bugID in your git commit links it to the slip. For example #1.
-
-License: CC-BY
-Pages 10
-
-    Home
-    Compatibility
-    Development Notes
-    Markdown Cheatsheet
-    Markdown Here Cheatsheet
-    Other Markdown Tools
-    Press, Posts, Reviews, Etc.
-    Reviews
-    Tips and Tricks
-    Troubleshooting
-
-Clone this wiki locally
