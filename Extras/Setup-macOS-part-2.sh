@@ -9,7 +9,7 @@ brew install gcc
 brew cask install powershell
 
 # Next, install VSCode
-brew cask update
+brew cask upgrade
 brew cask install visual-studio-code
 
 # The last of the tools to install is Azure Data Studio
