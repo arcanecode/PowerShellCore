@@ -9,7 +9,7 @@
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 # Next, we'll want to update the brew libraries
-brew upgrade
+brew update
 
 # Third, we need to run brew doctor. On some systems brew will find outdated
 # libraries that must be cleaned up prior to other installs
