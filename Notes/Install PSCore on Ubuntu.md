@@ -75,3 +75,34 @@ Once you have it downloaded (this assumes you take the default to save in the Do
 sudo dpkg -i ./Downloads/azuredatastudio-linux-1.5.2.deb
 ```
 Make sure to update the version number to the most current version for the file you download.
+
+#------------------------------------------------------------------------------
+# Install openssh
+#------------------------------------------------------------------------------
+# Make sure to follow the instructions in Configure Remoting on Ubuntu.md
+sudo apt -y install openssh-client openssh-server 
+
+#------------------------------------------------------------------------------
+# Azure Data Studio
+#------------------------------------------------------------------------------
+
+# There are some prerequsites we can install for Azure Data Studio
+sudo apt-get -y install libxss1
+sudo apt-get -y install libgconf-2-4
+sudo apt-get -y install libunwind8
+
+# Note - ADS still not working right, need a good d/l link. Disabled for now.
+# Now download Azure Data Studio
+wget -P ~/Downloads "https://go.microsoft.com/fwlink/?linkid=2083327"
+
+# When you download it, the process names it the same as the linked file, which is incorrect
+# Let's rename it to something that makes sense
+cd ~/Downloads
+mv index.html?linkid=2083327 azuredatastudio-linux.deb
+
+# And install it. Note at the time this was created, 1.5.2 was the current
+# version. You should check online at 
+# https://docs.microsoft.com/en-us/sql/azure-data-studio/download?view=sql-server-2017
+# for the current version number, then update the file name below to match it.
+cd ~
+sudo dpkg -i ./Downloads/azuredatastudio-linux.deb
