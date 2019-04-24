@@ -25,7 +25,7 @@ Another useful group of tools are the net-tools, so you can do things like get t
 
 To install them, run:
 ```bash
-sudo apt install net-tools
+sudo apt -y install net-tools
 ```
 Once installed, you can test (and see your IP address) by running:
 ```bash
@@ -91,7 +91,7 @@ In order to edit PowerShell scripts, we'll need to install VSCode.
 
 1. Install VSCode via a snap
 ```bash
-sudo snap install --classic code
+snap install --classic code
 ```
 That's it! Now you will want to add some extensions to make VSCode work better with PowerShell.
 
@@ -171,6 +171,22 @@ If you plan to use PowerShell Remoting, you'll need to install and configure ope
 ## Docker
 
 If you want to experiment with running SQL Server in Docker, see the instructions found in _Install Docker on Ubuntu.md_ in order to install and configure.
+
+## Configure the Ubuntu Desktop Favorites bar
+
+When you install Ubuntu in a VM over and over, to setup either class room or dev environments, you may want to automate the process of setting up your "favorites" bar on the left side of the display. 
+
+If you want to see what the current set of favorites are, use:
+```bash
+/usr/bin/gsettings get org.gnome.shell favorite-apps
+```
+
+The easiest way to determine your favoites list is to manually configure it once, adding and removing what you want. Then run the above command again, to get the list of your favorites. Copy and paste the output, and pass it into the `gsettings -set` command.
+
+For my own use, I use the following command to set mine, yours of course will reflect what you want.
+```bash
+gsettings set org.gnome.shell favorite-apps "['firefox.desktop', 'org.gnome.Terminal.desktop', 'org.gnome.Nautilus.desktop', 'code_code.desktop', 'azuredatastudio.desktop', 'org.gnome.Software.desktop', 'yelp.desktop']"
+```
 
 
 ---

@@ -113,8 +113,10 @@ sudo update-grub
 ```
 8. Finally, reboot your VM. You can use the GUI, or issue the following command in the terminal:
 ```bash
-sudo /sbin/shutdown -r now 
+sudo /sbin/shutdown now 
 ```
+
+Then restart the VM. (If you are wondering why we don't pass in the -r switch to do a reboot, it's been my experience reboots don't always work right in Ubuntu desktop VMs, they often come back to a blank screen.)
 
 Boom, enjoy the new resolution.
 
