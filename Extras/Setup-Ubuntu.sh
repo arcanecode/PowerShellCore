@@ -1,11 +1,38 @@
-# This script will do a complete run thru setting up most of what you need on Ubuntu
+#------------------------------------------------------------------------------
+#  Author: Robert C. Cain | @ArcaneCode | arcanecode@gmail.com
+#          http://arcanecode.com
+# 
+#  This script is Copyright (c) 2019 Robert C. Cain. All rights reserved.
+#
+#  The code herein is for demonstration purposes. No warranty or guarentee
+#  is implied or expressly granted. 
+#
+#  This script may not be reproduced in whole or in part without the express
+#  written consent of the author and/or Pluralsight. It can be used within
+#  your own projects.
+#------------------------------------------------------------------------------
+
+
+# This script will do a complete run thru setting up most of what you 
+# need on Ubuntu
 
 #------------------------------------------------------------------------------
-# Install Git, Snap, PowerShell, VSCode and network tools
+# Install some useful tools
 #------------------------------------------------------------------------------
 
 # First make sure everything is up to date
 sudo apt-get -y update
+
+# Install the VIM editor
+sudo apt -y install VIM
+
+# Go ahead and install the network tools so we can use things like ifconfig
+sudo apt -y install net-tools
+
+
+#------------------------------------------------------------------------------
+# Install Git, Snap, PowerShell, VSCode and network tools
+#------------------------------------------------------------------------------
 
 # Install git
 sudo apt -y install git-all
@@ -19,8 +46,6 @@ sudo snap install powershell --classic
 # Next, we can install VSCode
 sudo snap install --classic code
 
-# Go ahead and install the network tools so we can use things like ifconfig
-sudo apt -y install net-tools
 
 #------------------------------------------------------------------------------
 # Install openssh

@@ -2,22 +2,62 @@
 
 These instructions work on Ubuntu 18.10, or other distros that support snapcraft packages. (See below for older versions of Ubuntu or distros that don't support snapcraft.)
 
-## Method 1: Use the GUI
+
+## Install Useful Tools
+
+Before we install PowerShell Core and it's accompanying tools, there are some useful tools we should install in order to support the various instructions in this and other documents. 
+
+Before you install anything though, you want to be sure your tools are up to date. 
+
+```bash
+sudo apt-get -y update
+```
+
+(Note we'll be using -y throughout these instructions to auto accept confirmation answers).
+
+Next, let's install VIM (if it's not there)
+
+```bash
+sudo apt -y install VIM
+```
+
+Another useful group of tools are the net-tools, so you can do things like get the IP address of the computer you are using. 
+
+To install them, run:
+```bash
+sudo apt install net-tools
+```
+Once installed, you can test (and see your IP address) by running:
+```bash
+ifconfig
+```
+
+If you plan to use VSCode with repositories like GitHub, you want to be sure git is installed. 
+
+```bash
+sudo apt -y install git-all
+```
+
+Finally, PowerShell and other tools can be installed through what is called a snap package. (see https://snapcraft.io for more info). To support them we need to make sure the snap installer is present. (Note snaps only work with Ubuntu 18.x and above.)
+```bash
+sudo apt -y install snapd
+```
+
+## Install PowerShell Core
+
+Now we're ready to install PowerShell Core. There are two methods.
+
+### Method 1: Use the GUI
 
 1. Open the Ubuntu Software store from the toolbar (orage A icon)
 2. Click the Search icon.
-3. Enter PowerShell. Show the regular powershell as well as the preview. 
-4. Say this is one way to install, we'll show a second. 
-5. While here, do another search for VSCode, explaining we'll be using it to do our scripts. 
+3. Enter PowerShell. Note you will see the regular powershell icon, and you may also see the preview version of PowerShell. 
+4. We're going to install via the command line, but if you want to install through the GUI just double click to install. 
 
 ## Method 2: Use the command line
-1. PowerShell can be installed via a Snapcraft package, or simply a "snap".
+1. PowerShell can be installed via a Snapcraft package, or simply a "snap". This assumes you've installed the snap app in the instructions from the previous section.
 2. Open a terminal window. 
-3. Install the snapd application.
-```bash
-sudo apt install snapd
-```
-4. Install the PowerShell snap. 
+3. Install the PowerShell snap. 
 ```bash
 snap install powershell --classic
 ```
@@ -42,12 +82,14 @@ $PSVersionTable
 ```
 This is a variable built into PowerShell that contains information on the currently running version of PowerShell.
 
-## Installing on non-snapchat distros 
+#### Installing on non-snapchat distros 
 Microsoft has complete instructions and download links at:
 https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-core-on-linux?view=powershell-6
 
 ## Install VSCode via a snap
-1. Now install VSCode via a snap
+In order to edit PowerShell scripts, we'll need to install VSCode. 
+
+1. Install VSCode via a snap
 ```bash
 sudo snap install --classic code
 ```
@@ -59,16 +101,35 @@ That's it! Now you will want to add some extensions to make VSCode work better w
 4. Test by doing a file, new, then file, save as, navigate to the documents folder, and use test1.ps1 as the name.
 5. Enter a simple command and press F5 to run. 
 
-## Install VSCode without using snaps
+While you are here, there are some other extensions you should consider installing.
+* Markdown All in One
+* Markdown Preview Enhanced
+* SQL Server (mssql)
+* Bash Debug
+
+At the very least you'll want at least on of the Markdown extensions so you can display instructions in a readable format. 
+
+### Install VSCode without using snaps
 To install VSCode on systems that do not support snapcraft, please see the documentation on Microsoft's webste at:
 https://code.visualstudio.com/docs/setup/linux
 
 ## Azure Data Studio
-At the time of this writing, Azure Data Studio is not availble via a snap. You will have to install via their website.
+
+Azure Data Studio is the interface we use for working with data platforms, not only those found in Azure but for local databases such as SQL Server. In the PowerShell for Linux and macOS course, we'll be using it with the Docker section. 
+
+### Prerequisites
+Before installing Azure Data Studio, there are a few libraries you'll have to install. 
+
+```bash
+sudo apt-get -y install libxss1
+sudo apt-get -y install libgconf-2-4
+sudo apt-get -y install libunwind8
+```
+
+### Install Method 1 - GUI
+At the time of this writing, Azure Data Studio is not availble via a snap. The officially supported method to install ADS is from a downlaod at the Microsoft website.
 
 https://docs.microsoft.com/en-us/sql/azure-data-studio/download?view=sql-server-2017
-
-Be sure to read through the documentation, toward the bottom they mention additional dependancies you may need on your system. These have already been included in the Setup-Ubuntu.sh script.
 
 Once you have it downloaded (this assumes you take the default to save in the Downloads folder) you can install with this command:
 ```bash
@@ -76,33 +137,59 @@ sudo dpkg -i ./Downloads/azuredatastudio-linux-1.5.2.deb
 ```
 Make sure to update the version number to the most current version for the file you download.
 
-#------------------------------------------------------------------------------
-# Install openssh
-#------------------------------------------------------------------------------
-# Make sure to follow the instructions in Configure Remoting on Ubuntu.md
-sudo apt -y install openssh-client openssh-server 
+### Install Method 2 - Command Line
 
-#------------------------------------------------------------------------------
-# Azure Data Studio
-#------------------------------------------------------------------------------
+This next method presents an automated method to download and install Azure Data Studio. Note that it is _NOT_ supported by Microsoft, however I have tested it and it does seem to work. 
 
-# There are some prerequsites we can install for Azure Data Studio
-sudo apt-get -y install libxss1
-sudo apt-get -y install libgconf-2-4
-sudo apt-get -y install libunwind8
-
-# Note - ADS still not working right, need a good d/l link. Disabled for now.
-# Now download Azure Data Studio
+First, you can download ADS to your machien using wget:
+```bash
 wget -P ~/Downloads "https://go.microsoft.com/fwlink/?linkid=2083327"
+```
 
-# When you download it, the process names it the same as the linked file, which is incorrect
-# Let's rename it to something that makes sense
+When you download it, wget uses the linkid... for the name. Let's go to the download folder, and rename it to something that makes sense. 
+```bash
 cd ~/Downloads
 mv index.html?linkid=2083327 azuredatastudio-linux.deb
+```
 
-# And install it. Note at the time this was created, 1.5.2 was the current
-# version. You should check online at 
-# https://docs.microsoft.com/en-us/sql/azure-data-studio/download?view=sql-server-2017
-# for the current version number, then update the file name below to match it.
+Now we can install it.
+```bash
 cd ~
 sudo dpkg -i ./Downloads/azuredatastudio-linux.deb
+```
+
+## Additional VSCode Configuration
+
+After you've installed everything, you may want to take some additional steps to configure VSCode, especially if you plan to use it with git. 
+
+See the instructions found in _Configure VSCode.md_.
+
+## Remoting
+
+If you plan to use PowerShell Remoting, you'll need to install and configure openSSH. Please see the document _Configure Remoting on Ubuntu.md_ for instructions. 
+
+## Docker
+
+If you want to experiment with running SQL Server in Docker, see the instructions found in _Install Docker on Ubuntu.md_ in order to install and configure.
+
+
+---
+
+
+## Author Information
+
+### Author
+Robert C. Cain | @ArcaneCode | arcanecode@gmail.com 
+
+### Websites
+Github: http://arcanerepo.com
+Main: http://arcanecode.me 
+
+### Copyright Notice
+This document is Copyright (c) 2015, 2019 Robert C. Cain. All rights reserved.
+
+The code samples herein is for demonstration purposes. No warranty or guarentee is implied or expressly granted. 
+
+This document may not be reproduced in whole or in part without the express written consent of the author and/or Pluralsight. Information within can be used within your own projects.
+
+

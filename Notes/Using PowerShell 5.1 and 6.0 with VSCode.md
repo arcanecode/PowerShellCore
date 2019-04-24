@@ -53,3 +53,24 @@ For full documentation purposes, here is the complete contents of my settings.js
 }
 ```
 Do **NOT** copy and paste this into your settings, you may overwrite settings important to your system. I've included this to show you where the two additional lines fit into the settings and what an example of a full settings file might look like. 
+
+
+---
+
+
+## Author Information
+
+### Author
+Robert C. Cain | @ArcaneCode | arcanecode@gmail.com 
+
+### Websites
+Github: http://arcanerepo.com
+Main: http://arcanecode.me 
+
+### Copyright Notice
+This document is Copyright (c) 2015, 2019 Robert C. Cain. All rights reserved.
+
+The code samples herein is for demonstration purposes. No warranty or guarentee is implied or expressly granted. 
+
+This document may not be reproduced in whole or in part without the express written consent of the author and/or Pluralsight. Information within can be used within your own projects.
+

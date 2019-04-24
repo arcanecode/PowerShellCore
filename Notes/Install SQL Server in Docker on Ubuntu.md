@@ -38,3 +38,24 @@ GO
 
 Source:
 https://docs.microsoft.com/en-us/sql/linux/quickstart-install-connect-docker?view=sql-server-linux-ver15#pullandrun2019
+
+
+---
+
+
+## Author Information
+
+### Author
+Robert C. Cain | @ArcaneCode | arcanecode@gmail.com 
+
+### Websites
+Github: http://arcanerepo.com
+Main: http://arcanecode.me 
+
+### Copyright Notice
+This document is Copyright (c) 2015, 2019 Robert C. Cain. All rights reserved.
+
+The code samples herein is for demonstration purposes. No warranty or guarentee is implied or expressly granted. 
+
+This document may not be reproduced in whole or in part without the express written consent of the author and/or Pluralsight. Information within can be used within your own projects.
+

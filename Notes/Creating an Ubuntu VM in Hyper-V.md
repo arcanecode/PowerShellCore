@@ -102,12 +102,16 @@ Inside Ubuntu:
 ```bash
 GRUB_CMDLINE_LINUX_DEFAULT="quiet splash video=hyperv_fb:1280x720"
 ```
-5. Write changes with ESC :wq
-6. Update grub by running the following command:
+5. Next, find the line `GRUB_CMDLINE_LINUX=""` and update it to the following, making sure the screen resoultion matches that in the previous step:
+```bash
+GRUB_CMDLINE_LINUX="video=hyperv_fb:1280x720"
+```
+6. Write changes with ESC :wq
+7. Update grub by running the following command:
 ```bash
 sudo update-grub
 ```
-7. Finally, reboot your VM. You can use the GUI, or issue the following command in the terminal:
+8. Finally, reboot your VM. You can use the GUI, or issue the following command in the terminal:
 ```bash
 sudo /sbin/shutdown -r now 
 ```
@@ -119,3 +123,24 @@ Source: https://metinsaylan.com/8991/how-to-change-screen-resolution-on-ubuntu-1
 ## Last notes
 
 Ubuntu in the VM doesn't always restart correctly, instead you should probably do a shut down and then start.
+
+
+---
+
+
+## Author Information
+
+### Author
+Robert C. Cain | @ArcaneCode | arcanecode@gmail.com 
+
+### Websites
+Github: http://arcanerepo.com
+Main: http://arcanecode.me 
+
+### Copyright Notice
+This document is Copyright (c) 2015, 2019 Robert C. Cain. All rights reserved.
+
+The code samples herein is for demonstration purposes. No warranty or guarentee is implied or expressly granted. 
+
+This document may not be reproduced in whole or in part without the express written consent of the author and/or Pluralsight. Information within can be used within your own projects.
+
