@@ -45,7 +45,12 @@ Get-Process | Sort-Object CPU | Select-Object -First 10
 # to the local computer
 Exit-PSSession
 
-# Now create the command you want to run in the form of a script block
+# You can use Invoke-Command to execute a script block on a remote system
+# Even though we only have one simple command, it still must be in a
+# script block. 
+Invoke-Command $session -ScriptBlock { Get-ChildItem }
+
+# We can compose a more complex script block to pass in
 $command = { Get-Process |
              Sort-Object CPU |
              Select-Object Name, WorkingSet, PrivateMemorySize, VirtualMemorySize, Id, SI -First 5 |
@@ -57,4 +62,3 @@ $command = { Get-Process |
 Invoke-Command $session -ScriptBlock $command |
   Format-Table -AutoSize
 
-Invoke-Command $session gci
