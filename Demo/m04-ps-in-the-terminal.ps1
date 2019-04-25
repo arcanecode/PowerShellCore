@@ -46,6 +46,9 @@ Get-Help Get-Command
 
 # Right after installing PowerShell, and periodically thereafer, you
 # should update your help library
+# Unfortunately there is currently a bug in PowerShell Core on Ubuntu
+# that prevents it from working. 
+# (https://github.com/PowerShell/PowerShell/Issues/7452)
 Update-Help
 
 
@@ -54,7 +57,7 @@ Update-Help
 
 # First set a variable to your root path where you extracted the code
 # An example for Linux
-$rootPath = '/home/arcanecode/Documents/code/pscore/PowerShellCore/Notes/'
+$rootPath = '/home/arcanecode/Documents/code/PowerShellCore/Notes/'
 
 # If you are on Windows (yes, I know the course is for Linux / macOS but
 # PowerShell Core works on Windows too) here's an example
@@ -65,11 +68,8 @@ Clear-Host
 
 # Now just pick the MD file you want and run that one line of code to see the output
 
-# Shows how to set the default screen resolution in Ubuntu, useful when running in a VM
-ConvertFrom-Markdown -Path "$($rootPath)Adjust Ubuntu Screen Resolution.md" -AsVT100EncodedString | Show-Markdown
-
 # Shows how to configure Ubuntu with some basic utilities
-ConvertFrom-Markdown -Path "$($rootPath)Configure Ubuntu.md" -AsVT100EncodedString | Show-Markdown
+ConvertFrom-Markdown -Path "$($rootPath)Install PSCore on Ubuntu.md" -AsVT100EncodedString | Show-Markdown
 
 # Steps on how to configure VSCode to work with GIT
 ConvertFrom-Markdown -Path "$($rootPath)Configure VSCode.md" -AsVT100EncodedString | Show-Markdown
@@ -86,16 +86,10 @@ ConvertFrom-Markdown -Path "$($rootPath)Install PSCore on macOS.md" -AsVT100Enco
 # Install SQL Server in a Docker container on Ubuntu
 ConvertFrom-Markdown -Path "$($rootPath)Install SQL Server in Docker on Ubuntu.md" -AsVT100EncodedString | Show-Markdown
 
-# A list of suggested extensions for VSCode. 
-ConvertFrom-Markdown -Path "$($rootPath)Suggested Extensions.md" -AsVT100EncodedString | Show-Markdown
-
 # Even though Windows is not covered in this course, these demos will still work
 # if you install PowerShell Core on a Windows Machine. By default though, VSCode
 # will want to use PowerShell 5.1 as the default terminal. The instructions here
 # show how to change that to PowerShell Core.
 ConvertFrom-Markdown -Path "$($rootPath)Using PowerShell 5.1 and 6.0 with VSCode.md" -AsVT100EncodedString | Show-Markdown
 
-# This is just a cheat sheet of MarkDown commands. Made it a local copy
-# for quick and easy reference.
-ConvertFrom-Markdown -Path "$($rootPath)Markdown Cheatsheet.md" -AsVT100EncodedString | Show-Markdown
 

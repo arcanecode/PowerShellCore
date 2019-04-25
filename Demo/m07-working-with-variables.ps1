@@ -175,7 +175,7 @@ $_   # Current Object
 # Windows
 Set-Location 'C:\ps\01 - intro'
 # Linux
-Set-Location '/home/arcanecode/Documents/code/pscore/PowerShellCore/Demo'
+Set-Location '/home/arcanecode/Documents/code/PowerShellCore/Demo'
 # macOS
 
 

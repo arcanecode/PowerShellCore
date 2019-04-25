@@ -28,8 +28,9 @@ Get-ChildItem
 Get-Location
 
 # Set-Location will change the current path
-Set-Location "C:\PS\01 - Intro"
-Set-Location '/Users/arcanecode/Documents/code/PowerShellCore/Demo'
+
+# Linux
+Set-Location '/home/arcanecode/Documents/code/PowerShellCore/Demo'
 
 # Pipelining - combine CmdLets for power
 Get-ChildItem | Where-Object { $_.Length -gt 1kb } 
@@ -113,7 +114,7 @@ Get-ChildItem
 # Setting up provider aliases
 New-PSDrive -Name PSC `
             -PSProvider FileSystem `
-            -Root '/Users/arcanecode/Documents/code/PowerShellCore/'
+            -Root '/home/arcanecode/Documents/code/PowerShellCore/'
 
 Set-Location PSC:
 Get-ChildItem | Format-Table
@@ -129,7 +130,9 @@ Get-ChildItem | Format-Table
 # Windows
 # Set-Location 'C:\PS\Beginning PowerShell Scripting for Developers'
 # macOS
-Set-Location '/Users/arcanecode/Documents/code/PowerShellCore/Demo'
+# Set-Location '/Users/arcanecode/Documents/code/PowerShellCore/Demo'
+# Linux
+Set-Location '/home/arcanecode/Documents/code/PowerShellCore/Demo'
 
 Remove-PSDrive PSC
 

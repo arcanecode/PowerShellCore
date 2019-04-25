@@ -15,7 +15,11 @@
   your own projects.
 -----------------------------------------------------------------------------#>
 
-bash ./m11-install-docker.sh 
+# Linux
+Set-Location '/home/arcanecode/Documents/code/PowerShellCore'
+
+# Run a bash script to install docker
+bash ./Demo/m11-install-docker.sh 
 
 # Need to install the SqlServer Module. (You only need to do this once.)
 Install-Module SqlServer

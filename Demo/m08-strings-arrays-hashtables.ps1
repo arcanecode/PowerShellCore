@@ -35,7 +35,7 @@ Clear-Host
 
 # Escape Sequences - use the backtick ` --------------------------------
 Clear-Host
-#   backspace `b (does not work in ISE, only the regular script window)
+#   backspace `b 
 "Power`bShell"
 
 #   newline `n
@@ -98,7 +98,7 @@ SELECT col1
 # Windows
 Set-Location C:\PS
 # Linux
-Set-Location '/home/arcanecode/Documents/code/pscore/PowerShellCore/Demo'
+Set-Location '/home/arcanecode/Documents/code/PowerShellCore/Demo'
 Clear-Host
 
 # Take the output of Get-ChildItem, which is an object, and gets that objects count property
@@ -319,6 +319,15 @@ $array[1][2] # Zero based array, go to 2nd row, 3rd item
 # Take the contents of the array and join them into a single string. 
 $array[0] -join " "
 
+# -Join is useful with strings
+$array = 'Robert', 'Cain', 'Power', 'Shell'
+$array -join ' '
+
+# The parameter after the join is the separator inserted between each element
+$array = 'Robert', 'Cain', 'Power', 'Shell'
+$array -join '*'
+
+
 ##
 
 
@@ -368,7 +377,8 @@ $hash.ContainsValue("arcanecode.com")  # Not there since it was removed
 $hash.Keys
 $hash.Values
 
-# Find if a key or value is present
+# As an alternative to the Contains method, you can also use the -Contains
+# operator to find if a key or value is present
 $hash.Keys -contains "PowerShell"
 
 $hash.Values -contains "PowerShell.com"

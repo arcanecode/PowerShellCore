@@ -21,6 +21,7 @@
 #-----------------------------------------------------------------------------#
 #region Functions
 
+# In a previous demo we saw script blocks
 $hw = {
   Clear-Host
   'Hello World'
@@ -147,7 +148,7 @@ Clear-Host
 Set-Location "C:\PS\Beginning PowerShell Scripting for Developers\demo"
 
 # Linux
-Set-Location '/home/arcanecode/Documents/code/pscore/PowerShellCore/Demo'
+Set-Location '/home/arcanecode/Documents/code/PowerShellCore/Demo'
 
 Get-ChildItem | Get-PSFiles
 

@@ -27,6 +27,10 @@
   ability to reuse a set of functions across multiple scripts.
 -----------------------------------------------------------------------------#>
 
+# Set the location
+# Linux
+Set-Location '/home/arcanecode/Documents/code/PowerShellCore'
+
 # Try to execute the function before it is loaded 
 Add-SomeNumbers 1 2
 
