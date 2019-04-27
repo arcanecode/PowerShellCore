@@ -1,13 +1,16 @@
 
 # Linux
 ## Adding Git
-1. If git is not installed go to https://git-scm.com/download and install it
+1. If git is not installed go to https://git-scm.com/download and install it _or_ install over the command line. 
+```bash
+sudo apt -y install git-all
+```
 2. On your local drive, create the folder code\pscore under documents
 3. Now in VSCode, use Ctrl+Shift+P to bring up the command pallet
-3. Enter the command Git:Clone
-4. Enter the url for your repository. For this example I'm using
+4. Enter the command Git:Clone
+5. Enter the url for your repository. For this example I'm using
    https://github.com/arcanecode/PowerShellCore 
-5. Enter your user id and password
+6. Enter your user id and password
 
 ## After you make changes in VSCode
 Go to the source control tab to see list of changes
