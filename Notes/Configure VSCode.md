@@ -1,4 +1,19 @@
 
+
+# Important Note running VSCode on MacOS in a Parallels VM
+
+There is currently a bug when you run VSCode in a MacOS in Parallels Virtual Machine. The graphics accellaration causes VSCode to render incorrectly. To avoid this you need to run VSCode with graphics accelleration disabled. You'll have to do it from the command line. Open a terminal, then run VSCode with this command:
+
+```bash
+sudo "/Applications/Visual Studio Code.app/Contents/MacOS/Electron" --disable-gpu
+```
+
+Because there are spaces in the name you'll need to wrap the path in quotes. 
+
+To be clear, this bug ONLY affects Visual Studio Code when you create a macOS virtual machine using Parallels and run VSCode in it. 
+
+When you run VSCode directly on macOS this is not an issue, and you can just VSCode normally. 
+
 # Linux
 ## Adding Git
 1. If git is not installed go to https://git-scm.com/download and install it _or_ install over the command line. 

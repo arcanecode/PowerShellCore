@@ -1,8 +1,18 @@
 # Steps to install PowerShell Core on macOS
 
+## Prerequisites
+
+In order to fully utilize all the capabilties of VSCode, you'll need a set of libraries. The easiest way to get these installed to get these installed is to install the XCode and Command Line Tools. These will ensure all the development support tools, such as git, are installed and configured.
+
+You can install these via the App Store. Be aware the XCode install is 6 gig, and Command Line tools are about 250 meg. If you have a slow internet connection, or intend to build multiple macOS installs, you may wish to download these from the Apple Developer site once and reuse them with each install. 
+
+Whichever method you select, make sure to launch XCode once and accept the license agreement before you proceed. 
+
 ## Install brew
 
-First, install brew. Note that brew has a dependancy on the XCode libraries, which are about a 6 gig download. If you plan to run this over and over, for example setting up virtual macOS machines for testing and development, you might consider downloading it once and installing manually if you have a slow internet connection. You do have to have an Apple developer account in order to download it as an installer from Apple. 
+With the prerequisites taken care of, install brew. Note that brew has a dependancy on the XCode libraries, which are about a 200 meg download. If you plan to run this over and over, for example setting up virtual macOS machines for testing and development, you might consider downloading it once and installing manually if you have a slow internet connection. You do have to have an Apple developer account in order to download it as an installer from Apple. 
+
+With the XCode libraries installed, or when you are on a fast internet connection, run the following command to install homebrew.fs
 ```bash
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
@@ -59,7 +69,7 @@ https://code.visualstudio.com/download
 You can also use brew to install VSCode.
 ```bash
 brew cask update
-brew install visual-studio-code
+brew cask install visual-studio-code
 ```
 
 You may also wish to do a cleanup with brew to remove any outdated info from its local repository.
@@ -82,6 +92,13 @@ brew cask upgrade
 brew cask install azure-data-studio
 ```
 (Note if you just did an upgrade prior to installing VSCode, you could skip the first line)
+
+## Installing Git
+If you intend to have VSCode interact with git based repositories, such as github, you'll need to install git. You can do so using brew.
+```bash
+brew install git
+```
+
 
 ### References
 https://coolestguidesontheplanet.com/installing-homebrew-on-macos-sierra-package-manager-for-unix-apps/
