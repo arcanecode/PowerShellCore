@@ -40,37 +40,48 @@ Get-Process
 #>
 
 
-# That's a lot of rows returned! Let's narow down to one specific process
+# That's a lot of rows returned! Let's narow down to one specific process.
+# Let's check to see what VSCode is doing. On Linux, the process is called code
 Get-Process -ProcessName code
+
+# In macOS, it runs under the process called Electron (as VSCode is an 
+# Electron app)
+Get-Process -ProcessName Electron
 
 # We can also launch a process, let's start Azure Data Studio
 Start-Process 'azuredatastudio'
 
-# Let's see what it is doing
-Get-Process -Name 'azuredatastudio' | Format-List
+# Get the right label for the process, depending on the OS. Note that
+# on macOS, when ADS runs it's proce name changes to 'Azure Data Stud'
+# (and yes that is truncated). Run the right line for your OS
+$procName = 'azuredatastudio' # Linux
+$procName = 'Azure Data Stud' # macOS
+
+# Let's see what it is doing. Note that even though we use 'azuredatastudio
+Get-Process -Name $procName | Format-List
 
 # We can also see the file that launched the process
-Get-Process -Name 'azuredatastudio' -FileVersionInfo
+Get-Process -Name $procName -FileVersionInfo
 
 # We can see what user is running the process
-Get-Process -Name 'azuredatastudio' -IncludeUserName
+Get-Process -Name $procName -IncludeUserName
 
 # Get-Process returns object(s) with a lot of useful properties
 # We can use Get-Member to list them
 Get-Process | Get-Member
 
 # Let's use a few of them to create a slightly different output
-Get-Process -Name 'azuredatastudio' |
+Get-Process -Name $procName |
   Format-Table ProcessName, Id, SI, CPU, TotalProcessorTime, Path, StartTime
 
 # We can also stop it
-Stop-Process -Name 'azuredatastudio'
+Stop-Process -Name $procName
 
 # If we try to call Get-Process on it now, it will error out
-Get-Process -Name 'azuredatastudio'
+Get-Process -Name $procName
 
 # Let's do something a bit more automated.
-Start-Process 'azuredatastudio'
+Start-Process $procName
 
 # You can use wildcards in the call
 Get-Process 'azure*'
