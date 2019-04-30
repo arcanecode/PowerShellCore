@@ -93,11 +93,30 @@ brew cask install azure-data-studio
 ```
 (Note if you just did an upgrade prior to installing VSCode, you could skip the first line)
 
-## Installing Git
-If you intend to have VSCode interact with git based repositories, such as github, you'll need to install git. You can do so using brew.
+
+## Installing Docker
+
+### Method 1 - Download from the Docker Site
+
+Docker has a lot of "moving pieces" in terms of services and paths. For this reason, it's safest with macOS to install from their downloadable installer. This ensures everything is installed and configured correctly. This is what is done for this course.
+
+Here is the download link and instructions:
+
+https://docs.docker.com/docker-for-mac/install/
+
+### Method 2 - Command Line
+
+If you need to script the install you can, but it requires manual intervention at several steps. For that reason you may wish to install from the Docker site. 
+
+Installing is straightforward:
+
 ```bash
-brew install git
+brew cask install docker
 ```
+
+Read through the online Docker documentation for more information on configuration. 
+https://docs.docker.com/docker-for-mac/docker-toolbox/
+
 
 
 ### References
