@@ -19,7 +19,7 @@
 # examples are below.
 
 # Linux
-Set-Location '/home/arcanecode/Documents/code/PowerShellCore'
+Set-Location '/home/arcanecode/Documents/code/pscore/PowerShellCore'
 
 # macOS
 Set-Location '/Users/arcanecode/Documents/code/pscore/PowerShellCore' 
@@ -54,12 +54,16 @@ Set-Location '/Users/arcanecode/Documents/code/pscore/PowerShellCore'
   Assuming you have Docker already installed, and be sure to run it 
   manually at least once and login, you can run the following docker 
   command to download the container holding SQL Server 2017:
+
+  Note on Ubuntu you need to run docker as sudo, on macOS it is not
+  necessary and you can remove the 'sudo' from the front of all 
+  docker commands on macOS.
 #>
 
-docker pull mcr.microsoft.com/mssql/server:2017-latest
+sudo docker pull mcr.microsoft.com/mssql/server:2017-latest
 
 # If you want, you can verify it now exists
-docker image ls 
+sudo docker image ls 
 
 <#
   With the container downloaded, we can now run it. The following will 
@@ -86,11 +90,11 @@ docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=passW0rd!' \
   Or if you prefer you can just cut and paste this in a single line:
 #>
 
-docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=passW0rd!' -p 1433:1433 --name arcanesql -d mcr.microsoft.com/mssql/server:2017-latest
+sudo docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=passW0rd!' -p 1433:1433 --name arcanesql -d mcr.microsoft.com/mssql/server:2017-latest
 
 # You can verify the container was installed and is running by 
 # listing the containers on your system
-docker container ls
+sudo docker container ls
 
 #------------------------------------------------------------------------------
 # Working with SQL Server from PowerShell
@@ -194,38 +198,40 @@ $data
 
 # When done you may wish to cleanup. First, get a listing to refresh 
 # yourself on names and other info
-docker container ls
+sudo docker container ls
 
 # The above version only lists running containers. If you want to see all
 # containers, running or not, you can use:
-docker ps -a 
+sudo docker ps -a 
 
 # Next, stop your SQL Server container, passing in the name from the 
 # Names column
-docker stop arcanesql 
-docker ps -a 
+sudo docker stop arcanesql 
+sudo docker ps -a 
 
 # Stopping the container will help save memory. If you want to start it
 # back up, simply use
-docker container start arcanesql 
+sudo docker container start arcanesql 
 
 # You can also delete the docker container all together. First, stop it,
 # then use the rm command to remove it.
-docker stop arcanesql 
-docker rm arcanesql
+sudo docker stop arcanesql 
+sudo docker rm arcanesql
 
 # You can also combine these into a single step using the force switch
-docker rm --force arcanesql
+sudo docker rm --force arcanesql
 
 # Now we can use the listing command to validate it is gone
-docker ps -a 
+sudo docker ps -a 
 
 # This removed the container, but the downloaded image for
 # SQL Server is still on our system. Let's verify this:
-docker image ls 
+Clear-Host
+sudo docker image ls 
 
 # We can remove the image using the same name we used to pull it
-docker image rm mcr.microsoft.com/mssql/server:2017-latest
+sudo docker image rm mcr.microsoft.com/mssql/server:2017-latest
 
 # And let's verify it is gone
-docker image ls 
+Clear-Host
+sudo docker image ls 
