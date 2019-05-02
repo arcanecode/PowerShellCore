@@ -1,7 +1,7 @@
 
 # Install PowerShell Core on Linux Ubuntu
 
-These instructions work on Ubuntu 18.10, or other distros that support snapcraft packages. (See below for older versions of Ubuntu or distros that don't support snapcraft.)
+These instructions work on Ubuntu 18.04, 18.10, 19.04, or other distros that support snapcraft packages. (See below for older versions of Ubuntu or distros that don't support snapcraft.)
 
 
 ## Install Useful Tools
