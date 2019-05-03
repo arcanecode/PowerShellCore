@@ -134,7 +134,7 @@ https://docs.microsoft.com/en-us/sql/azure-data-studio/download?view=sql-server-
 
 Once you have it downloaded (this assumes you take the default to save in the Downloads folder) you can install with this command:
 ```bash
-sudo dpkg -i ./Downloads/azuredatastudio-linux-1.5.2.deb
+sudo dpkg -i ./Downloads/azuredatastudio-linux-1.6.0.deb
 ```
 Make sure to update the version number to the most current version for the file you download.
 
@@ -144,13 +144,13 @@ This next method presents an automated method to download and install Azure Data
 
 First, you can download ADS to your machien using wget:
 ```bash
-wget -P ~/Downloads "https://go.microsoft.com/fwlink/?linkid=2083327"
+wget -P ~/Downloads "https://go.microsoft.com/fwlink/?linkid=2087415"
 ```
 
 When you download it, wget uses the linkid... for the name. Let's go to the download folder, and rename it to something that makes sense. 
 ```bash
 cd ~/Downloads
-mv index.html?linkid=2083327 azuredatastudio-linux.deb
+mv index.html?linkid=2087415 azuredatastudio-linux.deb
 ```
 
 Now we can install it.
