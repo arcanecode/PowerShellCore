@@ -119,12 +119,10 @@ https://code.visualstudio.com/docs/setup/linux
 Azure Data Studio is the interface we use for working with data platforms, not only those found in Azure but for local databases such as SQL Server. In the PowerShell for Linux and macOS course, we'll be using it with the Docker section. 
 
 ### Prerequisites
-Before installing Azure Data Studio, there are a few libraries you'll have to install. 
+Before installing Azure Data Studio, there are three libraries you'll have to install. You can install all three at once with the following command:
 
 ```bash
-sudo apt-get -y install libxss1
-sudo apt-get -y install libgconf-2-4
-sudo apt-get -y install libunwind8
+sudo apt-get -y install libxss1 libgconf-2-4 libunwind8
 ```
 
 ### Install Method 1 - GUI
