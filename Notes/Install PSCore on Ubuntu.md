@@ -126,7 +126,7 @@ sudo apt-get -y install libxss1 libgconf-2-4 libunwind8
 ```
 
 ### Install Method 1 - GUI
-At the time of this writing, Azure Data Studio is not availble via a snap. The officially supported method to install ADS is from a downlaod at the Microsoft website.
+At the time of this writing, Azure Data Studio is not availble via a snap. The officially supported method to install ADS is from a download at the Microsoft website.
 
 https://docs.microsoft.com/en-us/sql/azure-data-studio/download?view=sql-server-2017
 
