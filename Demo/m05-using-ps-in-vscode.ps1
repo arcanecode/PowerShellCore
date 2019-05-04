@@ -24,6 +24,7 @@
 
 #region
   # Put your code here
+  # More code here
 #endregion
 
 #region The Region Title is Optional
@@ -51,13 +52,21 @@
 # Get-Command - Retrieves a list of all loaded cmdlets
 Get-Command
 
-# Can expand by searching for just a verb or noun
+# Can expand by searching for just a verb or noun. Here we
+# are using named parameters
 Get-Command -verb "get"
 Get-Command -noun "date"
 
-# In the modunle on the terminal, we showed ow Get-Help can be used 
-# to explain a command 
+# In the module on the terminal, we showed ow Get-Help can be used 
+# to explain a command. In this example we are using positional parameters
 Get-Help Get-Command
+
+# Looking at the help for Get-Help, we see the first parameter is "Name"
+# Thus this:
+Get-Help Get-Help
+
+# And this are the same
+Get-Help -Name Get-Help
 
 # Get-Help has some switches you can pass in to expand on what it tells you
 Get-Help Get-Command -examples
@@ -70,6 +79,8 @@ Get-Command -?
 
 
 #endregion Cmdlets
+
+
 
 
 
