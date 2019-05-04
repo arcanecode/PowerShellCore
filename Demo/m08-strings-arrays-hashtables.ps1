@@ -41,7 +41,7 @@ Clear-Host
 #   newline `n
 "Power`nShell"
 
-#   carriage return `r (doesn't really show anything)
+#   carriage return `r 
 "Power`rShell"
 
 #   crlf `r`n
@@ -49,6 +49,9 @@ Clear-Host
 
 #   tabs
 "Power`tShell"
+
+# Escape sequences are only supported in double quotes
+'Power`tShell'
 
 # Here Strings - for large blocks of text ------------------------------
 Clear-Host
@@ -98,7 +101,7 @@ SELECT col1
 # Windows
 Set-Location C:\PS
 # Linux
-Set-Location '/home/arcanecode/Documents/code/PowerShellCore/Demo'
+Set-Location '/home/arcanecode/Documents/code/PowerShellCore/PowerShellCore/Demo'
 Clear-Host
 
 # Take the output of Get-ChildItem, which is an object, and gets that objects count property
@@ -226,7 +229,7 @@ Clear-Host
 "PowerShell" -like "Power*"
 "PowerShell" -like "arcane*"
 "PowerShell" -like "?owerShell"  # question marks work for single characters
-"PowerShell" -like "Power*[s-v]" # ends in a char between s and v
+"PowerShell" -like "Power*[k-o]" # ends in a char between s and v
 "PowerShell" -like "Power*[a-c]" # ends in a char between a and c
 
 # Regular Expressions
@@ -244,7 +247,7 @@ Clear-Host
 
 # Simple array
 Clear-Host
-$array = "Arcane", "Code"
+$array = "Arcane", "Code", "is", "cool"
 $array
 $array[0]
 $array[1]
@@ -252,6 +255,7 @@ $array[1]
 $array.GetType()
 
 # Updating arrays
+Clear-Host
 $array = "Robert", "Cain"
 $array
 
@@ -260,6 +264,7 @@ $array[1] = "Shell"
 $array
 
 # Formal Array Creation Syntax
+Clear-Host
 $array = @("Power", "Shell")
 $array
 
@@ -270,7 +275,21 @@ $array += "Arcane"
 $array += "Code"
 $array.Count
 
+# Data types in the array can be mixed
+Clear-Host
+$array = "PowerShell", 42, "ArcaneCode", 33.33, "Pluralsight"
+$array
 
+# -Join is useful with string arrays
+Clear-Host
+$array = 'Robert', 'Cain', 'Power', 'Shell'
+$array -join ' '
+
+# The parameter after the join is the separator inserted between each element
+$array = 'Robert', 'Cain', 'Power', 'Shell'
+$array -join '*'
+
+# Loading arrays as a range
 $array = 1..5  # Can load arrays using numeric range notation
 $array
 
@@ -319,14 +338,6 @@ $array[1][2] # Zero based array, go to 2nd row, 3rd item
 # Take the contents of the array and join them into a single string. 
 $array[0] -join " "
 
-# -Join is useful with strings
-$array = 'Robert', 'Cain', 'Power', 'Shell'
-$array -join ' '
-
-# The parameter after the join is the separator inserted between each element
-$array = 'Robert', 'Cain', 'Power', 'Shell'
-$array -join '*'
-
 
 ##
 
@@ -342,36 +353,36 @@ $array -join '*'
 # Hash tables 
 #-----------------------------------------------------------------------------#
 
-$hash = @{"Key"         = "Value"; 
-          "PowerShell"  = "PowerShell.com"; 
-          "Arcane Code" = "arcanecode.com"}
+$hash = @{'MyFirstKey'  = 'The Value'
+          'PowerShell'  = 'PowerShell.com' 
+          'Arcane Code' = 'arcanecode.com'}
           
 $hash                  # Display all values
-$hash["PowerShell"]    # Get a single value from the key
+$hash['PowerShell']    # Get a single value from the key
 
-$hash."Arcane Code"    # Get single value using object syntax
+$hash.'Arcane Code'    # Get single value using object syntax
 
 # You can use variables as keys
-$mykey = "PowerShell"
+$mykey = 'PowerShell'
 $hash.$mykey         # Using variable as a property
 $hash.$($mykey)      # Evaluating as an expression
-$hash.$("Power" + "Shell")
+$hash.$('Power' + 'Shell')
 
 # Adding and removing values
 $hash                                     # Here's what's there to start
-$hash["Pluralsight"] = "pluralsight.com"  # Add value using new key
+$hash['Pluralsight'] = 'pluralsight.com'  # Add value using new key
 $hash                                     # Show the additional row
 
-$hash.Remove("Arcane Code")        # Remove by passing in key
+$hash.Remove('Arcane Code')        # Remove by passing in key
 $hash
 
 # See if key exists
-$hash.Contains("Pluralsight")      # Should be there
-$hash.Contains("Arcane Code")      # Gone since we just removed it
+$hash.Contains('Pluralsight')      # Should be there
+$hash.Contains('Arcane Code')      # Gone since we just removed it
 
 # See if value exists
-$hash.ContainsValue("PowerShell.com")  # Will be there
-$hash.ContainsValue("arcanecode.com")  # Not there since it was removed
+$hash.ContainsValue('PowerShell.com')  # Will be there
+$hash.ContainsValue('arcanecode.com')  # Not there since it was removed
 
 # List keys and values
 $hash.Keys
@@ -379,9 +390,9 @@ $hash.Values
 
 # As an alternative to the Contains method, you can also use the -Contains
 # operator to find if a key or value is present
-$hash.Keys -contains "PowerShell"
+$hash.Keys -contains 'PowerShell'
 
-$hash.Values -contains "PowerShell.com"
+$hash.Values -contains 'PowerShell.com'
 
 
 ##
