@@ -30,22 +30,29 @@ Get-Location
 # Set-Location will change the current path
 
 # Linux
-Set-Location '/home/arcanecode/Documents/code/PowerShellCore/Demo'
+Set-Location '/home/arcanecode/Documents/code/PowerShellCore/PowerShellCore/Demo'
 
 # Pipelining - combine CmdLets for power
+Get-ChildItem | Where-Object Length -gt 1kb
+
+# More formal Version
 Get-ChildItem | Where-Object { $_.Length -gt 1kb } 
 
-Get-ChildItem | Where-Object { $_.Length -gt 1kb } | Sort-Object Length
+# Must use {} when you have multiple conditions
+Get-ChildItem | Where-Object { $_.Length -gt 1kb -and $_.Name -like "m06*"} 
+
+
+Get-ChildItem | Where-Object Length -gt 1kb | Sort-Object Length
 
 # Can break commands up among several lines 
 # (note pipe must be last char on line)
 Get-ChildItem |
-  Where-Object { $_.Length -gt 1kb } |
+  Where-Object Length -gt 1kb |
   Sort-Object Length
 
 # To specify columns in the output and get nice formatting, use Format-Table  
 Get-ChildItem |
-  Where-Object { $_.Length -gt 1kb } |
+  Where-Object Length -gt 1kb |
   Sort-Object Length |
   Format-Table -Property Name, Length -AutoSize
   
@@ -59,6 +66,10 @@ Get-ChildItem | Select-Object Name, Length
 # on the line. No spaces or comments are allowed after it
 $currentLocation = Get-Location
 
+# Without Line Continuation
+Get-ChildItem -Path $currentLocation -File "*.ps1" ` -Verbose
+
+# With Line Continuation
 Get-ChildItem -Path $currentLocation  `
               -File "*.ps1" `
               -Verbose
@@ -114,12 +125,12 @@ Get-ChildItem
 # Setting up provider aliases
 New-PSDrive -Name PSC `
             -PSProvider FileSystem `
-            -Root '/home/arcanecode/Documents/code/PowerShellCore/'
+            -Root '/home/arcanecode/Documents/code/PowerShellCore/PowerShellCore/'
 
 Set-Location PSC:
 Get-ChildItem | Format-Table
 
-Set-Location PSC:\demo
+Set-Location PSC:\Demo
 Get-ChildItem | Format-Table
 
 
@@ -132,7 +143,7 @@ Get-ChildItem | Format-Table
 # macOS
 # Set-Location '/Users/arcanecode/Documents/code/PowerShellCore/Demo'
 # Linux
-Set-Location '/home/arcanecode/Documents/code/PowerShellCore/Demo'
+Set-Location '/home/arcanecode/Documents/code/PowerShellCore/PowerShellCore/Demo'
 
 Remove-PSDrive PSC
 

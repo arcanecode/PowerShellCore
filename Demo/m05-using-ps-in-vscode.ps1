@@ -17,23 +17,37 @@
 
 # Comments begin with a # (aka hashtag or pound sign)
 
+Get-Command        # Comments can go here too!
+
 <#
   Comment blocks use angle brackets with comment sign
   They can be multiline 
 #>
 
+<#----------------------------------------------
+  You can have characters after and before the 
+  closing brackets
+----------------------------------------------#>
+
+<# You can use opening and closing all on the same line #>
+
 #region
   # Put your code here
+  Clear-Host
   # More code here
 #endregion
 
 #region The Region Title is Optional
+  # some code here
+#endregion
 
-# some code here
-
+#region The Region Title is Optional
+  # some code here
 #endregion The Region Title is Optional
 
-
+#region The Region Title is Optional
+  # some code here
+#endregion I can put something different here
 
 
 
@@ -55,9 +69,11 @@ Get-Command
 # Can expand by searching for just a verb or noun. Here we
 # are using named parameters
 Get-Command -verb "get"
+
+Clear-Host
 Get-Command -noun "date"
 
-# In the module on the terminal, we showed ow Get-Help can be used 
+# In the module on the terminal, we showed how Get-Help can be used 
 # to explain a command. In this example we are using positional parameters
 Get-Help Get-Command
 
@@ -116,6 +132,8 @@ Get-Alias
 # Note: Aliases are fine for command line use or quick prototypes
 # For clarity however it is a best practice to use the full cmdlet
 # name in all scripts you write.
+
+dir         # Note the lightbulb, this is the autofix
 
 #endregion Aliasing
 
