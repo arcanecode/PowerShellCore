@@ -31,7 +31,7 @@ Write-Host 'Loading m10-reuse-1-functions.ps1'
 
 function Add-SomeNumbers ($a, $b)
 {
-  <#
+<#
 .SYNOPSIS
 Adds two numbers
 

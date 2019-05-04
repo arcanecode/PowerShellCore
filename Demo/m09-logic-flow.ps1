@@ -21,6 +21,15 @@
 #-----------------------------------------------------------------------------#
 #region Logic Branching
 
+# if
+$var = 1
+if ($var -eq 1)  # Be sure to use -eq instead of =
+{
+  Clear-Host
+  "If branch"
+}
+
+  
 # if/else
 $var = 2
 if ($var -eq 1)  # Be sure to use -eq instead of =
@@ -234,7 +243,7 @@ Clear-Host
 # Windows
 Set-Location "C:\PS\Beginning PowerShell Scripting for Developers\demo"
 # Linux
-Set-Location '/home/arcanecode/Documents/code/PowerShellCore/Demo'
+Set-Location '/home/arcanecode/Documents/code/PowerShellCore/PowerShellCore/Demo'
 
 foreach ($file in Get-ChildItem)
 {
@@ -264,8 +273,17 @@ foreach ($file in Get-ChildItem)
     continue  # exits the loop on first hit
     "More code here"
   }
-  "This isn't a powershell file: $file"
+  "This isn't a powershell file: $($file.Name)"
 }
+
+##
+
+
+
+
+
+
+
 
 
 # When used in a nested loop, break exits to the outer loop

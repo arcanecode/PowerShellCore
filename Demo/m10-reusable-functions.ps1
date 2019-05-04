@@ -46,6 +46,8 @@ Write-HelloWorld
 # Get a list of approved verbs
 Get-Verb
 
+# If you want them alphabetically use:
+Get-Verb | Sort-Object Verb 
 
 # Parameters can be passed in by placing them in parenthesis
 function Get-Fullname($firstName, $lastName)
@@ -89,11 +91,13 @@ Clear-Host
 $myparam = 42
 "Prior to funciton `$myparam = $myparam"
 Set-RefVar ([ref] $myparam) # Must add ref to call
-"After funciton `$myparam = $myparam"
+"After function `$myparam = $myparam"
 
 # NOTE: Altering the value of parameters is considered poor programming 
 #       practiceand should be avoided. Instead use return.
 
+
+# Using named parameters
 function Get-AValue($one, $two)
 {
   return $one * $two
@@ -116,7 +120,6 @@ $returnValue = Get-AValue -two 42 -one 33
 
 
 # It is possible to pipeline enable your functions
-# These are referred to as advanced functions
 function Get-PSFiles ()
 {
   # The begin block executes once at the start of the function
@@ -148,7 +151,7 @@ Clear-Host
 Set-Location "C:\PS\Beginning PowerShell Scripting for Developers\demo"
 
 # Linux
-Set-Location '/home/arcanecode/Documents/code/PowerShellCore/Demo'
+Set-Location '/home/arcanecode/Documents/code/PowerShellCore/PowerShellCore/Demo'
 
 Get-ChildItem | Get-PSFiles
 
@@ -182,6 +185,7 @@ function Get-PSFiles ()
 }
 
 $output = Get-ChildItem | Get-PSFiles
+$output
 $output.GetType()
 
 Clear-Host
@@ -216,6 +220,7 @@ Get-ChildItem | Get-PSFiles | Write-SomeText
 Get-ChildItem | Get-PSFiles 
 
 
+##
 
 
 
@@ -223,7 +228,12 @@ Get-ChildItem | Get-PSFiles
 
 
 
+
+
+
+#-----------------------------------------------------------------------------#
 # Advanced functions also allow parameters with extra helping hints
+#-----------------------------------------------------------------------------#
 function Get-AValue ()
 {
   [CmdletBinding()]   # Needed to indicate this is an advanced function
@@ -260,6 +270,48 @@ Get-AValue
 
 # Example 4, use a string for one (generates error)
 Get-AValue -one "x"
+
+# Using verbose and debug
+function Get-AValue ()
+{
+  [CmdletBinding()]   # Needed to indicate this is an advanced function
+  param (  # Begin the parameter block
+     [Parameter( Mandatory = $true,
+                 HelpMessage = 'Please enter value one.'
+                 )]
+     [int] $one,
+     # Note in the second we are strongly typing, and are providing a default value
+     [Parameter( Mandatory = $false,
+                 HelpMessage = 'Please enter value two.'
+                 )]
+     [int] $two = 42
+    )  # End the parameter block
+  
+  begin { Write-Verbose 'Get-AValue now starting' }
+  
+  process { 
+        Write-Verbose 'Get-AValue in the process loop'
+        Write-Debug "`$one = $one    `$two = $two"
+        return $one * $two
+      }
+  
+  end { Write-Verbose 'Get-AValue now ending'}
+  
+}
+
+Clear-Host
+
+# Run Normally
+Get-AValue -one 33 -two 42
+
+# Use the Verbose switch
+Get-AValue -one 33 -two 42 -Verbose
+
+# Use the Debug switch
+Get-AValue -one 33 -two 42 -Debug
+
+# Use both
+Get-AValue -one 33 -two 42 -Verbose -Debug
 
 #endregion Functions
 
@@ -330,6 +382,7 @@ function Get-ChildName ()
   Write-Output (Get-ChildItem | Select-Object "Name")
 }
 Clear-Host
+Get-ChildName   # Run once to see it in action
 Get-Help Get-ChildName
 
 

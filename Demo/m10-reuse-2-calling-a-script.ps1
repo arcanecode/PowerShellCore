@@ -29,7 +29,7 @@
 
 # Set the location
 # Linux
-Set-Location '/home/arcanecode/Documents/code/PowerShellCore'
+Set-Location '/home/arcanecode/Documents/code/PowerShellCore/PowerShellCore'
 
 # Try to execute the function before it is loaded 
 Add-SomeNumbers 1 2
