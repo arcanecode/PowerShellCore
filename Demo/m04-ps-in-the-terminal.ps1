@@ -29,6 +29,16 @@ Get-ChildItem
 
 # A command in PowerShell is known as a cmdlet
 
+# Move to a folder
+Set-Location Downloads
+
+# Relative Postions work too
+Set-Location ..
+
+# Clear the display
+Clear-Host
+
+
 # Here it produces a list of items in the current location. 
 # The current location is displayed in the prompt, here it is a folder
 # in the file system. 
