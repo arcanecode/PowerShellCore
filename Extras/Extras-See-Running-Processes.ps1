@@ -61,7 +61,7 @@ $procName = 'Azure Data Stud' # macOS
 Get-Process -Name $procName | Format-List
 
 # We can also see the file that launched the process
-Get-Process -Name $procName -FileVersionInfo
+Get-Process -Name $procName -FileVersionInfo | Select-Object FileName 
 
 # We can see what user is running the process
 Get-Process -Name $procName -IncludeUserName
@@ -81,7 +81,7 @@ Stop-Process -Name $procName
 Get-Process -Name $procName
 
 # Let's do something a bit more automated.
-Start-Process $procName
+Start-Process 'azuredatastudio'
 
 # You can use wildcards in the call
 Get-Process 'azure*'
