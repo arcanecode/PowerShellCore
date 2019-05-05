@@ -31,6 +31,9 @@
 # Linux
 Set-Location '/home/arcanecode/Documents/code/PowerShellCore/PowerShellCore'
 
+# macOS 
+Set-Location '/Users/arcanecode/Documents/code/pscore/PowerShellCore'
+
 # Try to execute the function before it is loaded 
 Add-SomeNumbers 1 2
 
