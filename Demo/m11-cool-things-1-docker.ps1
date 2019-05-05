@@ -48,6 +48,8 @@ Set-Location '/Users/arcanecode/Documents/code/pscore/PowerShellCore'
   folder of the project. 
 #>
 
+bash ./Demo/m11-install-docker.sh 
+
 <#
   Installing the Docker Container with SQL Server
 
@@ -100,8 +102,9 @@ sudo docker container ls
 # Working with SQL Server from PowerShell
 #------------------------------------------------------------------------------
 
-# Now we eed to install the PowerShell SqlServer Module, so we can access
+# Now we need to install the PowerShell SqlServer Module, so we can access
 # SQL Server inside PowerShell. (You only need to do the install once.)
+Clear-Host
 Install-Module SqlServer
 
 # After installing you can update your module using:
@@ -131,10 +134,10 @@ Invoke-Sqlcmd -Query $sql `
 
 # Note in this example we are filling from variables, but we could also 
 # hard code the values or use any other method to generate a value
-$sqlParams = @{ "ServerInstance" = $serverName;
-                "Database" = $dbName;
-                "Username" = $userName;
-                "Password" = $pw;
+$sqlParams = @{ "ServerInstance" = $serverName
+                "Database" = $dbName
+                "Username" = $userName
+                "Password" = $pw
                 "QueryTimeout" = $queryTimeout
               }
 
@@ -198,6 +201,7 @@ $data
 
 # When done you may wish to cleanup. First, get a listing to refresh 
 # yourself on names and other info
+Clear-Host
 sudo docker container ls
 
 # The above version only lists running containers. If you want to see all
