@@ -38,6 +38,10 @@ Enter-PSSession -Session $session
 # You will see the prompt change to the server name. Now any commands you
 # run will be executed on the server.
 
+# You can run simple commands
+Get-ChildItem
+
+# Or get more complex with them
 Get-Process | Sort-Object CPU | Select-Object -First 10
 
 # You can also run commands on a remote machine without having to enter its
@@ -49,6 +53,10 @@ Exit-PSSession
 # Even though we only have one simple command, it still must be in a
 # script block. 
 Invoke-Command $session -ScriptBlock { Get-ChildItem }
+
+# Save result to a variable
+$result = Invoke-Command $session -ScriptBlock { Get-ChildItem }
+$result
 
 # We can compose a more complex script block to pass in
 $command = { Get-Process |
