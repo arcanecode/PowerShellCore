@@ -29,7 +29,7 @@
 
 # Set the location
 # Linux
-Set-Location '/home/arcanecode/Documents/code/PowerShellCore/PowerShellCore'
+Set-Location '/home/arcanecode/Documents/code/pscore/PowerShellCore'
 
 # macOS 
 Set-Location '/Users/arcanecode/Documents/code/pscore/PowerShellCore'

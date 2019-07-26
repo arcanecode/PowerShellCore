@@ -145,6 +145,7 @@ $var
 
 #-----------------------------------------------------------------------------#
 # Built in variables
+# Note - Case is not imporant, $false, $False, and $FALSE are all the same
 #-----------------------------------------------------------------------------#
 # Automatic Variables
 Clear-Host
@@ -153,7 +154,7 @@ Clear-Host
 $false
 $true
 
-# Null
+# Null 
 $NULL
 
 # Current directory
@@ -176,7 +177,7 @@ $_   # Current Object
 # Windows
 Set-Location 'C:\ps\01 - intro'
 # Linux
-Set-Location '/home/arcanecode/Documents/code/PowerShellCore/PowerShellCore/Demo'
+Set-Location '/home/arcanecode/Documents/code/pscore/PowerShellCore/Demo'
 # macOS
 
 Get-ChildItem | Where-Object {$_.Name -like "*.ps1"}

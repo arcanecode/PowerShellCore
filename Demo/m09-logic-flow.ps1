@@ -243,7 +243,7 @@ Clear-Host
 # Windows
 Set-Location "C:\PS\Beginning PowerShell Scripting for Developers\demo"
 # Linux
-Set-Location '/home/arcanecode/Documents/code/PowerShellCore/PowerShellCore/Demo'
+Set-Location '/home/arcanecode/Documents/code/pscore/PowerShellCore/Demo'
 
 foreach ($file in Get-ChildItem)
 {

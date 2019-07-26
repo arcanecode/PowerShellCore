@@ -196,6 +196,27 @@ foreach($f in $output)
   "$i : $f"
 }
 
+# A way to use begin
+function Get-PSFiles ()
+{
+  begin  { # Use begin to setup some variables your process block will need 
+           $counter = 1 
+         }
+  
+  process { 
+        if ($_.Name -like "*.ps1")
+        { 
+          $retval = "`tPowerShell file #$counter is $($_.Name)"
+          $retval  # This is the equivalent of: return $retval
+          $counter++
+        }
+      }
+  
+  end { }          
+}
+
+$output = Get-ChildItem | Get-PSFiles
+$output
 
 function Write-SomeText ()
 {

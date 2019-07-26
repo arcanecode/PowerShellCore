@@ -101,7 +101,7 @@ SELECT col1
 # Windows
 Set-Location C:\PS
 # Linux
-Set-Location '/home/arcanecode/Documents/code/PowerShellCore/PowerShellCore/Demo'
+Set-Location '/home/arcanecode/Documents/code/pscore/PowerShellCore/Demo'
 Clear-Host
 
 # Take the output of Get-ChildItem, which is an object, and gets that objects count property
@@ -247,7 +247,7 @@ Clear-Host
 
 # Simple array
 Clear-Host
-$array = "Arcane", "Code", "is", "cool"
+$array = "Arcane", "Code", "is", 33, 19.5, "cool"
 $array
 $array[0]
 $array[1]
@@ -279,6 +279,12 @@ $array.Count
 Clear-Host
 $array = "PowerShell", 42, "ArcaneCode", 33.33, "Pluralsight"
 $array
+
+$array[0].GetType()
+$array[1].GetType()
+$array[3].GetType()
+
+
 
 # -Join is useful with string arrays
 Clear-Host
