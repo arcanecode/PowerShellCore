@@ -67,7 +67,7 @@ Update-Help
 
 # First set a variable to your root path where you extracted the code
 # An example for Linux
-$rootPath = '/home/arcanecode/Documents/code/PowerShellCore/Notes/'
+$rootPath = '/home/arcanecode/Documents/code/PowerShellCore/PowerShellCore/Notes/'
 
 # If you are on Windows (yes, I know the course is for Linux / macOS but
 # PowerShell Core works on Windows too) here's an example
