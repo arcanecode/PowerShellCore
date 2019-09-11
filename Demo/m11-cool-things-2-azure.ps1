@@ -100,7 +100,9 @@ Get-AzStorageAccount -ResourceGroupName $rgName
 
 # Storage account names must be between 3 and 24 characters in length,
 # and can only be lowercase and numbers
-$saName = 'pscorestorage'
+#db72f88d-a3cf-48f1-9900-debe4160e4c1
+
+$saName = 'pscorestorage20190910'
 New-AzStorageAccount -ResourceGroupName $rgName `
                      -Name $saName `
                      -Location $locName `
@@ -208,7 +210,7 @@ Set-AzStorageBlobContent -File $bacpac.FullName `
                          -Force 
 
 # Now we need to generate a SQL Server
-$serverName = 'pscorecoursesqlserver'
+$serverName = 'pscorecoursesqlserver20190910'
 $adminName = 'ArcaneCode'
 $pw = 'myModeratelyInsecurePassword1'
 
@@ -327,7 +329,7 @@ Get-AzSqlDatabase -ResourceGroupName $rgName `
 
 # As we did in the previous demo (m11-cool-things-1-docker) let's use
 # splatting to make parameter reuse easier
-$queryTimeout = 500000
+$queryTimeout = 65535
 
 $sqlParams = @{ "ServerInstance" = "$serverName.database.windows.net" ;
                 "Database" = $dbName ;

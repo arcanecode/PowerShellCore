@@ -20,6 +20,7 @@
 
 # Linux
 Set-Location '/home/arcanecode/Documents/code/pscore/PowerShellCore'
+Set-Location '/home/arcanecode/Documents/code/PowerShellCore/PowerShellCore/'
 
 # macOS
 Set-Location '/Users/arcanecode/Documents/code/pscore/PowerShellCore' 
@@ -65,7 +66,10 @@ bash ./Demo/m11-install-docker.sh
 sudo docker pull mcr.microsoft.com/mssql/server:2017-latest
 
 # If you want, you can verify it now exists
+Clear-Host
 sudo docker image ls 
+
+# (Note the mix of a PS command with a bash command)
 
 <#
   With the container downloaded, we can now run it. The following will 
