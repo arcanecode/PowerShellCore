@@ -27,6 +27,9 @@ Get-Module Az* -ListAvailable
 # Install the module
 Install-Module Az
 
+# Or if it exists, Update it
+Update-Module Az 
+
 # Login to Azure Interactively
 Connect-AzAccount
 
@@ -100,9 +103,21 @@ Get-AzStorageAccount -ResourceGroupName $rgName
 
 # Storage account names must be between 3 and 24 characters in length,
 # and can only be lowercase and numbers
-#db72f88d-a3cf-48f1-9900-debe4160e4c1
 
-$saName = 'pscorestorage20190910'
+# Normally I'd use a well thought out name. For this demo though,
+# people keep downloading the samples and not changing the name,
+# then it is no longer available.
+
+# For demo purposes then, we'll generate a random value each time. 
+# We'll use New-Guid to geenrate a unique string, then remove the
+# dashes. Then as account names are limited to 24 characters, 
+# we'll grab the first 24 characters. 
+
+# Because of the 24 character limit, we are not guarneteed to be
+# unique, but this should be pretty close, and will do for demo
+# purposes. 
+
+$saName = $($(New-Guid).ToString() -replace '-', '').Substring(0,23)
 New-AzStorageAccount -ResourceGroupName $rgName `
                      -Name $saName `
                      -Location $locName `
