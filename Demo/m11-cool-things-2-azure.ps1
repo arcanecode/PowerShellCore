@@ -31,10 +31,13 @@ Install-Module Az
 Update-Module Az 
 
 # Login to Azure Interactively
-Connect-AzAccount
+Connect-AzAccount #-Environment 'AzureCloud'
 
 # Get your subscriptions - This lists all the subscriptions associated with
 # your accounts login
+# Note, if you get errors logging in, saying it can't get your tenant, try 
+# running Clear-AzContext to remove any previously stored sessions then
+# try to Connect again.
 Get-AzSubscription
 
 # To see which of the subscriptions you are currently running under, get
@@ -104,16 +107,16 @@ Get-AzStorageAccount -ResourceGroupName $rgName
 # Storage account names must be between 3 and 24 characters in length,
 # and can only be lowercase and numbers
 
-# Normally I'd use a well thought out name. For this demo though,
-# people keep downloading the samples and not changing the name,
-# then it is no longer available.
+# Normally I'd use a well thought out storage account name. For 
+# this demo though, people keep downloading the samples and not
+# changing the name, then it is no longer available.
 
 # For demo purposes then, we'll generate a random value each time. 
 # We'll use New-Guid to geenrate a unique string, then remove the
 # dashes. Then as account names are limited to 24 characters, 
 # we'll grab the first 24 characters. 
 
-# Because of the 24 character limit, we are not guarneteed to be
+# Because of the 24 character limit, we are not guarenteed to be
 # unique, but this should be pretty close, and will do for demo
 # purposes. 
 
@@ -181,7 +184,7 @@ Set-Location "$($localLocation)\Demo"
 
 # Get a list of all the PowerShell files
 $psfiles = Get-ChildItem *.ps1
-$timeOut = 500000
+$queryTimeout = 65535
 
 foreach($psfile in $psfiles)
 {
