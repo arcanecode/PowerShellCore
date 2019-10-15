@@ -199,6 +199,12 @@ $data = Invoke-Sqlcmd -Query $sql @sqlParams
 # And display it back, or work with it however we want
 $data
 
+# We can work with the collection on a row by row basis
+foreach($rowObject in $data)
+{
+  "$($rowObject.YouTubeName) is a favorite YouTuber!"
+}
+
 #------------------------------------------------------------------------------
 # Cleanup
 #------------------------------------------------------------------------------
