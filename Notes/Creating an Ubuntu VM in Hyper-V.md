@@ -3,11 +3,12 @@
 In this tutorial we'll see how to install Ubuntu in a Microsoft Hyper-V virtual machine. In the tutorial, we'll use Ubuntu 19.04, but the steps work with most any version of Linux. 
 
 ## Prerequisites
-For this demo we are using Windows 10 Pro. Before you can use Hyper-V, you need to make sure it is activated in the Windows features. 
+
+For this demo we are using Windows 10 Pro. Before you can use Hyper-V, you need to make sure it is activated in the Windows features.
 
 Click on the Start menu, then click on the gear to bring up Windows Settings. Then select _Apps_. In the _Apps & features_ look to the right and click on _Programs and Features_. 
 
-When the dialog appears, click on _Turn Windows features on or off_. In the Windows Featues dialog, put a check next to Hyper-V, then click the OK button. Confirm your choices, then (if needed) reboot. 
+When the dialog appears, click on _Turn Windows features on or off_. In the Windows Features dialog, put a check next to Hyper-V, then click the OK button. Confirm your choices, then (if needed) reboot.
 
 ## Create the VM
 
@@ -15,13 +16,13 @@ Start by opening the Hyper-V manager. (Start, Windows Administrative Tools, Hype
 
 <img src="Images/hyperv-001.jpg" width=640>
 
-The first screen in the wizard is just a welcoming screen. You can, if you want, click on the _Do not show this page again_ check box so in the future you won't have to see it. Click Next. 
+The first screen in the wizard is just a welcoming screen. You can, if you want, click on the _Do not show this page again_ check box so in the future you won't have to see it. Click Next.
 
 <img src="Images/hyperv-002.jpg" width=640>
 
-Next, you'll be prompted to give the VM a name. This is the name that will appear in the list of VMs. 
+Next, you'll be prompted to give the VM a name. This is the name that will appear in the list of VMs.
 
-Also note the option to store the VM in a different location. This location is used for the VM information, but not for the virtual hard drive. We'll set that location in a bit. 
+Also note the option to store the VM in a different location. This location is used for the VM information, but not for the virtual hard drive. We'll set that location in a bit.
 
 Enter a good name that describes the VM, then click Next.
 
@@ -35,21 +36,21 @@ On the next screen you assign the amount of memory you want the machine to have.
 
 <img src="Images/hyperv-005.jpg" width=640>
 
-Next, you are ask to configure your network connection. The _Default Switch_ option will use the same network connection as the host machine. If you've setup a different network connection you can of course use it. 
+Next, you are ask to configure your network connection. The _Default Switch_ option will use the same network connection as the host machine. If you've setup a different network connection you can of course use it.
 
 <img src="Images/hyperv-006.jpg" width=640>
 
-On the next screen you are asked about the virtual hard disk, or VHD, you want to use for the virtual machine. We'll create a new one for this exercise. 
+On the next screen you are asked about the virtual hard disk, or VHD, you want to use for the virtual machine. We'll create a new one for this exercise.
 
-On this creation I've opted to store the new VHD on a different drive on the host machine (the Windows 10 box). 
+On this creation I've opted to store the new VHD on a different drive on the host machine (the Windows 10 box).
 
-As a last step you can resize the virtual hard drive if you want. This is the size the drive will expand to, not the size of the drive initially. For a simple VM you could easily reduce this to 50 gig, but leaving it at 127 won't create any problems as it will only grow to that size if it needs to. 
+As a last step you can resize the virtual hard drive if you want. This is the size the drive will expand to, not the size of the drive initially. For a simple VM you could easily reduce this to 50 gig, but leaving it at 127 won't create any problems as it will only grow to that size if it needs to.
 
 <img src="Images/hyperv-007.jpg" width=640>
 
-On the next tab we can indicate we want to install a new operating system, and where the source ISO is. 
+On the next tab we can indicate we want to install a new operating system, and where the source ISO is.
 
-Change the option to _Install an operating system from a bootable image file_, then click the Browse button to find the ISO file. 
+Change the option to _Install an operating system from a bootable image file_, then click the Browse button to find the ISO file.
 
 When you've picked it, click Next.
 
@@ -61,11 +62,11 @@ The last page is the summary page. Just click next to create the new VM.
 
 ## But wait, there's more!
 
-You may be tempted to start up the virtual machine, but **don't**! 
+You may be tempted to start up the virtual machine, but **don't**!
 
-Back in the Hyper-V manager, find the new VM. Right click, and pick _Settings_. 
+Back in the Hyper-V manager, find the new VM. Right click, and pick _Settings_.
 
-In the window that appears, start by clicking on Security. Naturally Ubuntu doesn't support Windows Windows boot security, instead change it to Microsoft UEFI Certificate Authority. 
+In the window that appears, start by clicking on Security. Naturally Ubuntu doesn't support Windows Windows boot security, instead change it to Microsoft UEFI Certificate Authority.
 
 <img src="Images/hyperv-010.jpg" width=640>
 
@@ -73,7 +74,7 @@ Next, click on the option for Processor. By default it only provides for 1 virtu
 
 <img src="Images/hyperv-011.jpg" width=640>
 
-Next click on Checkpoints. This is a personal choice, but I don't care much for Checkpoints so I'm going to uncheck the _Enable checkpoints_ option. 
+Next click on Checkpoints. This is a personal choice, but I don't care much for Checkpoints so I'm going to uncheck the _Enable checkpoints_ option.
 
 <img src="Images/hyperv-012.jpg" width=640>
 
@@ -81,39 +82,46 @@ With these choices done, click OK.
 
 ## Install Ubuntu
 
-Back in the Hyper-V Manager, just right click on the row with your new Virtual Machine and click Start. 
+Back in the Hyper-V Manager, just right click on the row with your new Virtual Machine and click Start.
 
-When the VM launches, with Ubuntu it will be in "Live" mode. You can experiment with the machine. When ready you can lick install to install it. 
+When the VM launches, with Ubuntu it will be in "Live" mode. You can experiment with the machine. When ready you can lick install to install it.
 
-From there just follow the prompts like you would any Ubuntu installation. 
+From there just follow the prompts like you would any Ubuntu installation.
 
 # Last Configuration Step
 
-As a last step, you may want to set the screen resolution. When installing Ubuntu in a Hyper-V VM the resolution doesn't resize automatically, and getting the tools right can be a troublesome endevour. 
+As a last step, you may want to set the screen resolution. When installing Ubuntu in a Hyper-V VM the resolution doesn't resize automatically, and getting the tools right can be a troublesome endevour.
 
 If screen resolution is the only thing that needs to be fixed, it's far easier just to edit the default resolution in the Ubuntu configuration. Use the following steps to make your Ubuntu VM just the right size.
 
 Inside Ubuntu:
 
 1. Open a terminal window
-2. sudio vi /etc/default/grub
-3. Find the line starting with GRUB_CMDLINE_LINUX_DEFAULT
-4. Append video=hyperv_fb:1280x720 (or 1920x1080, or 2560x1440, etc) so it looks like:
+2. `sudo vi /etc/default/grub`
+3. Find the line starting with `GRUB_CMDLINE_LINUX_DEFAULT`
+4. Append `video=hyperv_fb:1280x720` (or 1920x1080, or 2560x1440, etc) so it looks like:
+
 ```bash
 GRUB_CMDLINE_LINUX_DEFAULT="quiet splash video=hyperv_fb:1280x720"
 ```
+
 5. Next, find the line `GRUB_CMDLINE_LINUX=""` and update it to the following, making sure the screen resoultion matches that in the previous step:
+
 ```bash
 GRUB_CMDLINE_LINUX="video=hyperv_fb:1280x720"
 ```
+
 6. Write changes with ESC :wq
 7. Update grub by running the following command:
+
 ```bash
 sudo update-grub
 ```
+
 8. Finally, reboot your VM. You can use the GUI, or issue the following command in the terminal:
+
 ```bash
-sudo /sbin/shutdown now 
+sudo /sbin/shutdown now
 ```
 
 Then restart the VM. (If you are wondering why we don't pass in the -r switch to do a reboot, it's been my experience reboots don't always work right in Ubuntu desktop VMs, they often come back to a blank screen.)
@@ -126,23 +134,23 @@ Source: https://metinsaylan.com/8991/how-to-change-screen-resolution-on-ubuntu-1
 
 Ubuntu in the VM doesn't always restart correctly, instead you should probably do a shut down and then start.
 
-
 ---
-
 
 ## Author Information
 
 ### Author
+
 Robert C. Cain | @ArcaneCode | arcanecode@gmail.com 
 
 ### Websites
-Github: http://arcanerepo.com
-Main: http://arcanecode.me 
+
+Github: [http://arcanerepo.com](http://arcanerepo.com)
+Main: [http://arcanecode.me](http://arcanecode.me)
 
 ### Copyright Notice
-This document is Copyright (c) 2015, 2019 Robert C. Cain. All rights reserved.
 
-The code samples herein is for demonstration purposes. No warranty or guarentee is implied or expressly granted. 
+This document is Copyright (c) 2015, 2019, 2020 Robert C. Cain. All rights reserved.
+
+The code samples herein is for demonstration purposes. No warranty or guarantee is implied or expressly granted.
 
 This document may not be reproduced in whole or in part without the express written consent of the author and/or Pluralsight. Information within can be used within your own projects.
-
