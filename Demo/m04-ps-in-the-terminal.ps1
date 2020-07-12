@@ -1,5 +1,5 @@
 <#-----------------------------------------------------------------------------
-  Getting Started with PowerShell Core on Linux and macOS
+   Getting Started with PowerShell Core on Linux and macOS
   Using PowerShell in the Terminal
 
   Author: Robert C. Cain | @ArcaneCode | arcanecode@gmail.com
