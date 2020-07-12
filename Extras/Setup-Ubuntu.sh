@@ -24,7 +24,7 @@
 sudo apt-get -y update
 
 # Install the VIM editor
-sudo apt -y install VIM
+sudo apt -y install vim 
 
 # Go ahead and install the network tools so we can use things like ifconfig
 sudo apt -y install net-tools
@@ -113,7 +113,16 @@ sudo docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=passW0rd!' \
 # Configure the Ubuntu Desktop Favorites bar
 #------------------------------------------------------------------------------
 
+# Note: If you have an application open, that is also in your favorites, 
+# then this may fail. I had this with terminal. To fix I closed terminal,
+# removed it from my favorites, then re-opened terminal and ran the command
+# below. Worked fine.
+
 # As a last step let's fix up our favorites
 # If you want to see what the default favorites are, use:
 # /usr/bin/gsettings get org.gnome.shell favorite-apps
 gsettings set org.gnome.shell favorite-apps "['firefox.desktop', 'org.gnome.Terminal.desktop', 'org.gnome.Nautilus.desktop', 'code_code.desktop', 'azuredatastudio.desktop', 'org.gnome.Software.desktop', 'yelp.desktop']"
+
+# If you are on Ubuntu 20.04, the software store has been changed to
+# 'snap-store_ubuntu-software.desktop'. 
+gsettings set org.gnome.shell favorite-apps "['firefox.desktop', 'org.gnome.Terminal.desktop', 'org.gnome.Nautilus.desktop', 'code_code.desktop', 'azuredatastudio.desktop', 'snap-store_ubuntu-software.desktop', 'yelp.desktop']"
