@@ -101,7 +101,7 @@ SELECT col1
 # Windows
 Set-Location C:\PS
 # Linux
-Set-Location '/home/arcanecode/Documents/code/pscore/PowerShellCore/Demo'
+Set-Location '/home/arcanecode/code/PowerShellCore/PowerShellCore/Demo'
 Clear-Host
 
 # Take the output of Get-ChildItem, which is an object, and gets that objects count property

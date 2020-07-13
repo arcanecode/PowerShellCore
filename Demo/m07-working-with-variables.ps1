@@ -177,7 +177,7 @@ $_   # Current Object
 # Windows
 Set-Location 'C:\ps\01 - intro'
 # Linux
-Set-Location '/home/arcanecode/Documents/code/pscore/PowerShellCore/Demo'
+Set-Location '/home/arcanecode/code/PowerShellCore/PowerShellCore/Demo'
 # macOS
 
 Get-ChildItem | Where-Object {$_.Name -like "*.ps1"}
