@@ -25,7 +25,7 @@
 # Let's start by creating a session against a remote server. Note that as we
 # enabled ssh key login on the remote server, we won't be prompted for a 
 # password. 
-$session = New-PSSession -HostName acubuntu1810server -UserName arcanecode
+$session = New-PSSession -HostName acubuntu2004srv -UserName arcanecode
 
 # Display the contents of the session variable.
 $session
