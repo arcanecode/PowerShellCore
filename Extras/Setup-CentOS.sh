@@ -58,3 +58,7 @@ sudo dnf install code
 cd ~
 yum install ./Downloads/azuredatastudio-linux-1.6.0.rpm
 
+# Install Docker
+sudo dnf config-manager --add-repo=https://download.docker.com/linux/centos/docker-ce.repo
+
+sudo dnf install docker-ce --nobest
