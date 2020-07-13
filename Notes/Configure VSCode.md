@@ -102,6 +102,8 @@ When prompted enter your user id and password
 
 If successful, you'll see "Everything up-to-date".
 
+Note that the login method for storing your credentials has altered slightly since the original course. Instead of entering your credentials on the command line, VSCode now opens up a web browser and prompts you to login to github, then asks you to authorize the app. Once you do, VSCode will now let you check in / out without having to enter credentials each time.
+
 Be aware this is stored in plain text on your drive, you'll have to decide if this
 is worth the trade off. For more info see:
 
