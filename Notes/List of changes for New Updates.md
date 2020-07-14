@@ -14,3 +14,8 @@ Line 116 - The application name for the Ubuntu software store has changed in Ubu
 Configure VSCode.md
 
 Note that the login method for storing your credentials has altered slightly. Instead of entering your credentials on the command line, VSCode now opens up a web browser and prompts you to login to github, then asks you to authorize the app. Once you do, VSCode will now let you check in / out without having to enter credentials each time.
+
+m11-cool-things-3-remoting.ps1
+
+Exit-PSSession hangs, just hit Ctrl+C and it will finish and exit the session.
+
