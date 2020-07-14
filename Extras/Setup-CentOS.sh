@@ -62,3 +62,13 @@ yum install ./Downloads/azuredatastudio-linux-1.6.0.rpm
 sudo dnf config-manager --add-repo=https://download.docker.com/linux/centos/docker-ce.repo
 
 sudo dnf install docker-ce --nobest
+
+# Enable and start docker service
+sudo systemctl enable --now docker
+
+# Validate it is running
+systemctl status docker
+
+# Add your user
+sudo usermod -aG docker $user
+
